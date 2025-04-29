@@ -1,4 +1,6 @@
 const students = [
+    { no: 6002, name: "Büşra Tetik", gender: "Kız" },
+    { no: 6018, name: "Ramazan Miran İlhan", gender: "Erkek" },
     { no: 6203, name: "Ümit Arda Özbek", gender: "Erkek" },
     { no: 6204, name: "Emine Tuğba Uysal", gender: "Kız" },
     { no: 6205, name: "Kadir Cahit Alcan", gender: "Erkek" },
