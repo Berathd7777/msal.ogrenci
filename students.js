@@ -1,6 +1,5 @@
 const students = [
     { no: 6018, name: "Ramazan Miran İlhan", gender: "Erkek" },
-    { no: 6203, name: "Ümit Arda Özbek", gender: "Erkek" },
     { no: 6205, name: "Kadir Cahit Alcan", gender: "Erkek" },
     { no: 6209, name: "Köksal Buluklu", gender: "Erkek" },
     { no: 6211, name: "Yasin Kılıçarslan", gender: "Erkek" },
@@ -12,6 +11,6 @@ const students = [
     { no: 6224, name: "Ahmed Feridun Güneş", gender: "Erkek" },
     { no: 6226, name: "Çağan Gökgündüz", gender: "Erkek" },
     { no: 6229, name: "Emir Turan Erdoğan", gender: "Erkek" },
-    { no: 6231, name: "Erdem Şahin", gender: "Erkek" },
+    { no: 6231, name: "Tırtarlı Erdem", gender: "Erkek" },
     { no: 6232, name: "Emirhan Ayhan", gender: "Erkek" }
 ];
