@@ -378,7 +378,7 @@ export default function Home() {
           </div>
         </div>
         <div className="container mt-4 text-center">
-          <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} MSAL Öğrenci</p>
+          <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} BRT Plus Company</p>
         </div>
       </footer>
 
