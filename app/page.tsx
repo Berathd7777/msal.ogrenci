@@ -358,7 +358,7 @@ export default function Home() {
               className="h-[27px] w-auto"
             />
             <Image
-              src="/images/made-for-iphone.png"
+              src="https://camo.githubusercontent.com/06ab6195fff7415040ca8ffd40c8b737d43d66182440f3e347139fa4b4836d2b/68747470733a2f2f6364736173736574732e6170706c652e636f6d2f6c6976652f37575541533335302f696d616765732f6d6164652d666f722d6970686f6e652e706e67"
               alt="Made for iPhone"
               width={80}
               height={27}
