@@ -18,6 +18,7 @@ export default function Home() {
   const [isWelcomePopupOpen, setIsWelcomePopupOpen] = useState(false)
   const [currentPlatform, setCurrentPlatform] = useState<"android" | "ios">("android")
   const [verifiedStudentName, setVerifiedStudentName] = useState("")
+  const [verifiedStudentClass, setVerifiedStudentClass] = useState<"9D" | "9E" | "">("")
 
   // Android indirme butonuna tıklandığında
   const handleAndroidButtonClick = (e: React.MouseEvent) => {
@@ -34,9 +35,10 @@ export default function Home() {
   }
 
   // Öğrenci doğrulama başarılı olduğunda
-  const handleVerificationSuccess = (studentName: string) => {
+  const handleVerificationSuccess = (studentName: string, studentClass: "9D" | "9E") => {
     setIsStudentVerificationOpen(false)
     setVerifiedStudentName(studentName)
+    setVerifiedStudentClass(studentClass)
     setIsWelcomePopupOpen(true)
   }
 
@@ -50,10 +52,14 @@ export default function Home() {
     setIsWelcomePopupOpen(false)
 
     if (currentPlatform === "android") {
-      // Android için doğrudan APK indirme bağlantısına yönlendir
-      window.open("https://github.com/Berathd7777/msal.ogrenci/releases/download/4.1/msal-4.1.apk", "_blank")
+      // Android için sınıfa göre doğru APK indirme bağlantısına yönlendir
+      if (verifiedStudentClass === "9D") {
+        window.open("https://github.com/Berathd7777/msal.ogrenci/releases/download/4.2/msal4.2-9d.apk", "_blank")
+      } else if (verifiedStudentClass === "9E") {
+        window.open("https://github.com/Berathd7777/msal.ogrenci/releases/download/4.2/msal4.2-9e.apk", "_blank")
+      }
     } else {
-      // iOS için kurulum talimatları popup'ını göster
+      // iOS için kurulum talimatları popup'ını göster (sadece 9D için)
       setIsIosPopupOpen(true)
     }
   }
@@ -125,7 +131,7 @@ export default function Home() {
                 <Link href="#download">
                   <Button size="lg" className="gap-2">
                     <Download className="h-5 w-5" />
-                    İndir • Sürüm 4.1
+                    İndir • Sürüm 4.2
                   </Button>
                 </Link>
                 <Link href="#features">
@@ -315,7 +321,7 @@ export default function Home() {
                   <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" className="h-5 w-5">
                     <path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4483-.9993.9993-.9993c.5511 0 .9993.4483.9993.9993.0001.5511-.4482.9997-.9993.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4483.9993.9993 0 .5511-.4483.9997-.9993.9997m11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.2439 13.8533 7.8508 12 7.8508s-3.5902.3931-5.1367 1.0989L4.841 5.4467a.4161.4161 0 00-.5677-.1521.4157.4157 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3435-4.1021-2.6892-7.5743-6.0775-9.4396" />
                   </svg>
-                  İndir • Sürüm 4.1
+                  İndir • Sürüm 4.2
                 </Button>
               </a>
               <a href="#" onClick={handleAppleButtonClick} className="w-full max-w-[240px]">
@@ -333,6 +339,7 @@ export default function Home() {
               <p className="text-sm opacity-80 mt-2">
                 * MSAL Öğrenci uygulaması Android 7.0 ve üzeri sürümlerde çalışmaktadır.
               </p>
+              <p className="text-sm opacity-80 mt-2">* 9/D ve 9/E sınıfları için özel olarak geliştirilmiştir.</p>
             </div>
           </div>
         </section>
@@ -366,12 +373,6 @@ export default function Home() {
             />
           </div>
           <div className="flex gap-4">
-            <Link
-              href="https://github.com/Berathd7777/msal.ogrenci"
-              className="text-sm text-muted-foreground hover:text-primary"
-            >
-              GitHub
-            </Link>
             <Link href="tel:+905518912600" className="text-sm text-muted-foreground hover:text-primary">
               İletişim
             </Link>
