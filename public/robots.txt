@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://msalogrenci.vercel.app/sitemap.xml
