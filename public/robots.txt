@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://msalogrenci.vercel.app/sitemap.xml
+Sitemap: https://msalogrenci.vercel.app/sitemap1.xml
