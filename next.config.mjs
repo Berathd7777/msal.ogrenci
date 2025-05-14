@@ -10,16 +10,16 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // Sitemap ve robots dosyalarını doğrudan public klasöründen sunmak için
+  // API Routes üzerinden sitemap.xml ve robots.txt dosyalarını sunmak için
   async rewrites() {
     return [
       {
         source: '/sitemap.xml',
-        destination: '/public/sitemap.xml',
+        destination: '/api/sitemap.xml',
       },
       {
         source: '/robots.txt',
-        destination: '/public/robots.txt',
+        destination: '/api/robots.txt',
       },
     ]
   },
