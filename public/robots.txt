@@ -1,6 +1,0 @@
-# robots.txt - MSAL Öğrenci - Eğitim Hayatınızı Kolaylaştırın
-User-agent: *
-Allow: /
-
-# Sitemap
-Sitemap: https://msalogrenci.vercel.app/sitemap.xml
