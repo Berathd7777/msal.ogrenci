@@ -5,7 +5,7 @@ import type React from "react"
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { BookOpen, Calendar, ChevronRight, Download, FileText, Search, Users } from "lucide-react"
+import { BookOpen, Calendar, ChevronRight, Download, FileText, Search, Users, Palette } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { IosPopup } from "@/components/ios-popup"
@@ -221,6 +221,94 @@ export default function Home() {
                 </p>
               </div>
             </div>
+
+            {/* Material Design 3 Özelliği */}
+            <div className="mt-16">
+              <div className="space-y-4 text-center mb-8">
+                <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl">Yeni Tasarım: Material Design 3</h2>
+                <p className="mx-auto max-w-[700px] text-muted-foreground">
+                  MSAL Öğrenci uygulaması artık Google'ın en yeni tasarım dili Material Design 3 ile yenilendi. Daha
+                  modern, daha kullanıcı dostu ve daha estetik bir deneyim için tasarlandı.
+                </p>
+              </div>
+
+              <div className="grid gap-8 md:grid-cols-2 items-center">
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <div className="h-10 w-10 rounded-full bg-purple-500 flex items-center justify-center">
+                      <Palette className="h-5 w-5 text-white" />
+                    </div>
+                    <h3 className="text-xl font-bold">Dinamik Renk Teması</h3>
+                  </div>
+                  <p className="text-muted-foreground">
+                    Material You teknolojisi ile uygulama teması cihazınızın duvar kağıdına göre otomatik olarak uyum
+                    sağlar.
+                  </p>
+
+                  <div className="flex items-center gap-3 mt-6">
+                    <div className="h-10 w-10 rounded-full bg-purple-500 flex items-center justify-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="text-white"
+                      >
+                        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                        <path d="M19 3v4"></path>
+                        <path d="M21 5h-4"></path>
+                      </svg>
+                    </div>
+                    <h3 className="text-xl font-bold">Aydınlık/Karanlık Mod</h3>
+                  </div>
+                  <p className="text-muted-foreground">
+                    Göz yorgunluğunu azaltmak için karanlık mod desteği ve otomatik tema değiştirme özelliği.
+                  </p>
+
+                  <div className="flex items-center gap-3 mt-6">
+                    <div className="h-10 w-10 rounded-full bg-purple-500 flex items-center justify-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="text-white"
+                      >
+                        <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+                        <path d="M9 14v1"></path>
+                        <path d="M9 19v2"></path>
+                        <path d="M9 3v2"></path>
+                        <path d="M9 9v1"></path>
+                      </svg>
+                    </div>
+                    <h3 className="text-xl font-bold">Yeni Arayüz Bileşenleri</h3>
+                  </div>
+                  <p className="text-muted-foreground">
+                    Yuvarlak köşeler, gelişmiş animasyonlar ve daha iyi erişilebilirlik için yeniden tasarlanmış arayüz.
+                  </p>
+                </div>
+
+                <div className="relative w-full max-w-[500px] mx-auto overflow-hidden rounded-lg">
+                  <Image
+                    src="/images/material-design-3.png"
+                    alt="Material Design 3 Arayüzü"
+                    width={500}
+                    height={400}
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -298,6 +386,17 @@ export default function Home() {
                   />
                 </div>
                 <p className="text-center mt-2 font-medium">Ders Programı</p>
+              </div>
+              <div className="min-w-[250px] snap-center flex-shrink-0">
+                <div className="relative h-[500px] w-[250px] overflow-hidden rounded-[30px] border-4 border-gray-800 shadow-lg">
+                  <Image
+                    src="/images/material-design-3.png"
+                    alt="Material Design 3 Arayüzü"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <p className="text-center mt-2 font-medium">Material Design 3</p>
               </div>
               <div className="min-w-[100px] flex-shrink-0 snap-end"></div>
             </div>
