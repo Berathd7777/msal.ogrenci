@@ -387,18 +387,6 @@ export default function Home() {
                 </div>
                 <p className="text-center mt-2 font-medium">Ders Programı</p>
               </div>
-              <div className="min-w-[250px] snap-center flex-shrink-0">
-                <div className="relative h-[500px] w-[250px] overflow-hidden rounded-[30px] border-4 border-gray-800 shadow-lg">
-                  <Image
-                    src="/images/material-design-3.png"
-                    alt="Material Design 3 Arayüzü"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <p className="text-center mt-2 font-medium">Material Design 3</p>
-              </div>
-              <div className="min-w-[100px] flex-shrink-0 snap-end"></div>
             </div>
           </div>
         </section>
