@@ -41,6 +41,14 @@ export default function RootLayout({
           href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/rounded-in-photoretrica%20%284%29-u6Yox6ZWzjPyIcrgivt5FqpFEG15n3.png"
         />
         <script src="https://elevenlabs.io/convai-widget/index.js" async type="text/javascript"></script>
+        <script>
+          {`
+            var HW_config = {
+              account: "7eW9Wy"
+            }
+          `}
+        </script>
+        <script async src="https://cdn.headwayapp.co/widget.js"></script>
       </head>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>

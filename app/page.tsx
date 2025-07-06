@@ -135,7 +135,7 @@ export default function Home() {
                   </Button>
                 </Link>
                 <Link href="#features">
-                  <Button size="lg" variant="outline" className="gap-2">
+                  <Button size="lg" variant="outline" className="gap-2 bg-transparent">
                     Özellikleri Keşfet
                     <ChevronRight className="h-4 w-4" />
                   </Button>
