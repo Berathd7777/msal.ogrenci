@@ -5,17 +5,19 @@ import type React from "react"
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { BookOpen, Calendar, ChevronRight, Download, FileText, Search, Users, Palette } from "lucide-react"
+import { BookOpen, Calendar, ChevronRight, Download, FileText, Search, Users, Palette, Tag } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { IosPopup } from "@/components/ios-popup"
 import { StudentVerificationPopup } from "@/components/student-verification-popup"
 import { WelcomePopup } from "@/components/welcome-popup"
+import { UpdateNotesPopup } from "@/components/update-notes-popup"
 
 export default function Home() {
   const [isIosPopupOpen, setIsIosPopupOpen] = useState(false)
   const [isStudentVerificationOpen, setIsStudentVerificationOpen] = useState(false)
   const [isWelcomePopupOpen, setIsWelcomePopupOpen] = useState(false)
+  const [isUpdateNotesOpen, setIsUpdateNotesOpen] = useState(false)
   const [currentPlatform, setCurrentPlatform] = useState<"android" | "ios">("android")
   const [verifiedStudentName, setVerifiedStudentName] = useState("")
   const [verifiedStudentClass, setVerifiedStudentClass] = useState<"9D" | "9E" | "">("")
@@ -73,6 +75,16 @@ export default function Home() {
   const handleIosPopupConfirm = () => {
     setIsIosPopupOpen(false)
     window.open("https://msalweb.vercel.app/", "_blank")
+  }
+
+  // Güncelleme notları popup'ını aç
+  const handleUpdateNotesClick = () => {
+    setIsUpdateNotesOpen(true)
+  }
+
+  // Güncelleme notları popup'ını kapat
+  const handleUpdateNotesClose = () => {
+    setIsUpdateNotesOpen(false)
   }
 
   return (
@@ -140,6 +152,10 @@ export default function Home() {
                     <ChevronRight className="h-4 w-4" />
                   </Button>
                 </Link>
+                <Button size="lg" variant="outline" className="gap-2 bg-transparent" onClick={handleUpdateNotesClick}>
+                  <Tag className="h-4 w-4" />
+                  Güncelleme Notları
+                </Button>
               </div>
             </div>
             <div className="flex items-center justify-center">
@@ -488,6 +504,9 @@ export default function Home() {
 
       {/* iOS Kurulum Talimatları Popup */}
       <IosPopup isOpen={isIosPopupOpen} onClose={handleIosPopupClose} onConfirm={handleIosPopupConfirm} />
+
+      {/* Güncelleme Notları Popup */}
+      <UpdateNotesPopup isOpen={isUpdateNotesOpen} onClose={handleUpdateNotesClose} />
 
       {/* Elevenlabs Convai Widget */}
       <div className="fixed bottom-4 right-4 z-50">

@@ -2,7 +2,6 @@ import type React from "react"
 import "@/app/globals.css"
 import { Inter } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
-import Script from "next/script"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -41,24 +40,12 @@ export default function RootLayout({
           rel="apple-touch-icon"
           href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/rounded-in-photoretrica%20%284%29-u6Yox6ZWzjPyIcrgivt5FqpFEG15n3.png"
         />
+        <script src="https://elevenlabs.io/convai-widget/index.js" async type="text/javascript"></script>
       </head>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           {children}
         </ThemeProvider>
-
-        {/* Elevenlabs Script */}
-        <Script src="https://elevenlabs.io/convai-widget/index.js" strategy="lazyOnload" />
-
-        {/* Headway Widget - Simplified */}
-        <Script id="headway-config" strategy="beforeInteractive">
-          {`
-            window.HW_config = {
-              account: "7eW9Wy"
-            };
-          `}
-        </Script>
-        <Script src="https://cdn.headwayapp.co/widget.js" strategy="afterInteractive" />
       </body>
     </html>
   )
