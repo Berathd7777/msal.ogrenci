@@ -9,7 +9,6 @@ export default function QRDogrulamaPage() {
   const [isScanning, setIsScanning] = useState(false)
   const [isApproved, setIsApproved] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const [debugInfo, setDebugInfo] = useState<string>("")
   const [jsQRLoaded, setJsQRLoaded] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -19,31 +18,11 @@ export default function QRDogrulamaPage() {
 
   useEffect(() => {
     // jsQR kütüphanesini yükle
-    const loadJsQR = async () => {
-      try {
-        // Script'i dinamik olarak yükle
-        if (!window.jsQR) {
-          const script = document.createElement("script")
-          script.src = "https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"
-
-          const loadPromise = new Promise((resolve, reject) => {
-            script.onload = resolve
-            script.onerror = reject
-          })
-
-          document.head.appendChild(script)
-          await loadPromise
-        }
-
-        setJsQRLoaded(true)
-        setDebugInfo("jsQR kütüphanesi yüklendi")
-      } catch (err) {
-        setError("QR kod okuyucu yüklenemedi")
-        setDebugInfo("jsQR yükleme hatası: " + err)
-      }
-    }
-
-    loadJsQR()
+    const script = document.createElement("script")
+    script.src = "https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"
+    script.onload = () => setJsQRLoaded(true)
+    script.onerror = () => setError("QR kod okuyucu yüklenemedi")
+    document.head.appendChild(script)
 
     return () => {
       // Cleanup
@@ -53,58 +32,80 @@ export default function QRDogrulamaPage() {
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current)
       }
+      try {
+        document.head.removeChild(script)
+      } catch (e) {
+        // Script zaten kaldırılmış olabilir
+      }
     }
   }, [])
 
   const startScanning = async () => {
     if (!jsQRLoaded) {
-      setError("QR kod okuyucu henüz yüklenmedi")
+      setError("QR kod okuyucu henüz yüklenmedi, lütfen bekleyin")
       return
     }
 
     try {
       setError(null)
-      setDebugInfo("Kamera erişimi isteniyor...")
 
       // Önce mevcut stream'i durdur
       if (streamRef.current) {
         streamRef.current.getTracks().forEach((track) => track.stop())
+        streamRef.current = null
       }
 
-      const constraints = {
+      // Kamera izni iste
+      const stream = await navigator.mediaDevices.getUserMedia({
         video: {
-          facingMode: { ideal: "environment" },
-          width: { ideal: 1280, min: 640 },
-          height: { ideal: 720, min: 480 },
+          facingMode: "environment",
+          width: { ideal: 1280 },
+          height: { ideal: 720 },
         },
-      }
+      })
 
-      const stream = await navigator.mediaDevices.getUserMedia(constraints)
       streamRef.current = stream
-      setDebugInfo("Kamera stream'i alındı")
 
       if (videoRef.current) {
         videoRef.current.srcObject = stream
 
-        // Video yüklenene kadar bekle
-        await new Promise((resolve) => {
+        // Video başlatılana kadar bekle
+        videoRef.current.onloadedmetadata = () => {
           if (videoRef.current) {
-            videoRef.current.onloadedmetadata = resolve
-            videoRef.current.play()
+            videoRef.current
+              .play()
+              .then(() => {
+                setIsScanning(true)
+                scanningRef.current = true
+                startQRScan()
+              })
+              .catch((playError) => {
+                setError("Video oynatılamadı: " + playError.message)
+              })
           }
-        })
+        }
 
-        setIsScanning(true)
-        scanningRef.current = true
-        setDebugInfo("Video başlatıldı, tarama başlıyor...")
-
-        // Taramayı başlat
-        startQRScan()
+        // Video hata durumu
+        videoRef.current.onerror = () => {
+          setError("Video yüklenirken hata oluştu")
+        }
       }
     } catch (err) {
-      const errorMsg = err instanceof Error ? err.message : "Bilinmeyen hata"
-      setError(`Kamera hatası: ${errorMsg}`)
-      setDebugInfo(`Kamera hatası: ${errorMsg}`)
+      let errorMessage = "Kamera erişimi reddedildi"
+
+      if (err instanceof Error) {
+        if (err.name === "NotAllowedError") {
+          errorMessage = "Kamera izni reddedildi. Lütfen tarayıcı ayarlarından kamera iznini verin."
+        } else if (err.name === "NotFoundError") {
+          errorMessage = "Kamera bulunamadı. Lütfen cihazınızda kamera olduğundan emin olun."
+        } else if (err.name === "NotReadableError") {
+          errorMessage = "Kamera kullanımda. Lütfen diğer uygulamaları kapatın."
+        } else {
+          errorMessage = "Kamera hatası: " + err.message
+        }
+      }
+
+      setError(errorMessage)
       setIsScanning(false)
       scanningRef.current = false
     }
@@ -123,12 +124,14 @@ export default function QRDogrulamaPage() {
       streamRef.current = null
     }
 
-    setDebugInfo("Tarama durduruldu")
+    if (videoRef.current) {
+      videoRef.current.srcObject = null
+    }
   }
 
   const startQRScan = () => {
     const scan = () => {
-      if (!scanningRef.current || !videoRef.current || !canvasRef.current) {
+      if (!scanningRef.current || !videoRef.current || !canvasRef.current || !window.jsQR) {
         return
       }
 
@@ -136,77 +139,54 @@ export default function QRDogrulamaPage() {
       const canvas = canvasRef.current
       const context = canvas.getContext("2d")
 
-      if (!context || !window.jsQR) {
+      if (!context) {
         animationRef.current = requestAnimationFrame(scan)
         return
       }
 
       if (video.readyState === video.HAVE_ENOUGH_DATA) {
-        // Canvas boyutlarını video boyutlarına ayarla
         canvas.width = video.videoWidth
         canvas.height = video.videoHeight
-
-        // Video frame'ini canvas'a çiz
         context.drawImage(video, 0, 0, canvas.width, canvas.height)
 
-        // Image data'yı al
         const imageData = context.getImageData(0, 0, canvas.width, canvas.height)
 
         try {
-          // QR kod ara
           const code = window.jsQR(imageData.data, imageData.width, imageData.height, {
             inversionAttempts: "dontInvert",
           })
 
           if (code && code.data) {
-            setDebugInfo(`QR kod bulundu: ${code.data.substring(0, 50)}...`)
             checkQRContent(code.data)
             return
-          } else {
-            // Debug için tarama durumunu göster
-            setDebugInfo(`Taranıyor... (${canvas.width}x${canvas.height})`)
           }
         } catch (err) {
-          setDebugInfo(`QR tarama hatası: ${err}`)
+          // QR tarama hatası - sessizce devam et
         }
       }
 
-      // Sonraki frame'i tara
       animationRef.current = requestAnimationFrame(scan)
     }
 
-    // İlk taramayı başlat
     animationRef.current = requestAnimationFrame(scan)
   }
 
   const checkQRContent = (content: string) => {
-    setDebugInfo(`QR içeriği kontrol ediliyor: ${content}`)
-
-    // Doğrulama metni kontrolü - daha esnek hale getir
     const validTexts = ["𝕄𝐒🝗𝒍⁰𝓧", "MSAL_AUTH", "msal-auth", "MSAL-OGRENCI", "msal-ogrenci"]
-
     const isValid = validTexts.some((text) => content.includes(text))
 
     if (isValid) {
       setIsApproved(true)
       stopScanning()
-      setDebugInfo("QR kod onaylandı!")
 
-      // 2 saniye sonra yönlendir
       setTimeout(() => {
         window.open("https://github.com/Berathd7777/msal.ogrenci/releases/download/4.3/msal4.3-9d.apk", "_blank")
         window.location.href = "/"
       }, 2000)
     } else {
-      setError(`Geçersiz QR kod. Okunan içerik: "${content.substring(0, 100)}"`)
-      setDebugInfo(`Geçersiz QR: ${content}`)
+      setError(`Geçersiz QR kod. Lütfen yetkili QR kodunu okutunuz.`)
       stopScanning()
     }
-  }
-
-  // Test butonu - geliştirme için
-  const testQR = () => {
-    checkQRContent("𝕄𝐒🝗𝒍⁰𝓧")
   }
 
   return (
@@ -224,13 +204,6 @@ export default function QRDogrulamaPage() {
       </header>
 
       <main className="flex-1 flex flex-col items-center justify-center p-4">
-        {/* Debug bilgileri */}
-        {debugInfo && (
-          <div className="mb-4 p-2 bg-blue-50 border border-blue-200 rounded text-xs text-blue-800 max-w-md">
-            <strong>Debug:</strong> {debugInfo}
-          </div>
-        )}
-
         {!isScanning && !isApproved && (
           <div className="text-center space-y-6 max-w-md">
             <div className="space-y-2">
@@ -240,17 +213,10 @@ export default function QRDogrulamaPage() {
               </div>
             </div>
 
-            <div className="space-y-2">
-              <Button onClick={startScanning} className="w-full" disabled={!jsQRLoaded}>
-                <Camera className="h-4 w-4 mr-2" />
-                {jsQRLoaded ? "QR Kod Okutmaya Başla" : "QR Okuyucu Yükleniyor..."}
-              </Button>
-
-              {/* Test butonu - geliştirme için */}
-              <Button onClick={testQR} variant="outline" className="w-full text-xs bg-transparent">
-                Test QR (Geliştirme)
-              </Button>
-            </div>
+            <Button onClick={startScanning} className="w-full" disabled={!jsQRLoaded}>
+              <Camera className="h-4 w-4 mr-2" />
+              {jsQRLoaded ? "QR Kod Okutmaya Başla" : "QR Okuyucu Yükleniyor..."}
+            </Button>
           </div>
         )}
 
@@ -267,14 +233,11 @@ export default function QRDogrulamaPage() {
               />
               <canvas ref={canvasRef} className="hidden" />
 
-              {/* Tarama çerçevesi */}
               <div className="absolute inset-0 border-2 border-primary rounded-lg pointer-events-none">
                 <div className="absolute top-4 left-4 w-8 h-8 border-t-4 border-l-4 border-primary"></div>
                 <div className="absolute top-4 right-4 w-8 h-8 border-t-4 border-r-4 border-primary"></div>
                 <div className="absolute bottom-4 left-4 w-8 h-8 border-b-4 border-l-4 border-primary"></div>
                 <div className="absolute bottom-4 right-4 w-8 h-8 border-b-4 border-r-4 border-primary"></div>
-
-                {/* Tarama çizgisi */}
                 <div className="absolute inset-x-8 top-1/2 h-0.5 bg-primary animate-pulse shadow-lg"></div>
               </div>
             </div>
@@ -314,7 +277,6 @@ export default function QRDogrulamaPage() {
             <Button
               onClick={() => {
                 setError(null)
-                setDebugInfo("")
                 if (!isScanning) {
                   startScanning()
                 }
