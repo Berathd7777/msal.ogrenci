@@ -5,37 +5,65 @@ import { ArrowLeft, Camera, CheckCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
+// jsQR kütüphanesini dinamik olarak yükle
+declare global {
+  interface Window {
+    jsQR: any
+  }
+}
+
 export default function QRDogrulamaPage() {
   const [isScanning, setIsScanning] = useState(false)
   const [isApproved, setIsApproved] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [jsQRLoaded, setJsQRLoaded] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const streamRef = useRef<MediaStream | null>(null)
+  const scanningRef = useRef<boolean>(false)
 
   useEffect(() => {
+    // jsQR kütüphanesini yükle
+    const script = document.createElement("script")
+    script.src = "https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"
+    script.onload = () => setJsQRLoaded(true)
+    script.onerror = () => setError("QR kod okuyucu yüklenemedi")
+    document.head.appendChild(script)
+
     return () => {
       // Cleanup: kamera stream'ini kapat
       if (streamRef.current) {
         streamRef.current.getTracks().forEach((track) => track.stop())
       }
+      // Script'i temizle
+      document.head.removeChild(script)
     }
   }, [])
 
   const startScanning = async () => {
+    if (!jsQRLoaded) {
+      setError("QR kod okuyucu henüz yüklenmedi, lütfen bekleyin")
+      return
+    }
+
     try {
       setError(null)
       setIsScanning(true)
+      scanningRef.current = true
 
       const stream = await navigator.mediaDevices.getUserMedia({
-        video: { facingMode: "environment" }, // Arka kamera
+        video: {
+          facingMode: "environment", // Arka kamera
+          width: { ideal: 1280 },
+          height: { ideal: 720 },
+        },
       })
 
       streamRef.current = stream
 
       if (videoRef.current) {
         videoRef.current.srcObject = stream
-        videoRef.current.play()
+        await videoRef.current.play()
 
         // QR kod tarama işlemini başlat
         scanQRCode()
@@ -43,12 +71,14 @@ export default function QRDogrulamaPage() {
     } catch (err) {
       setError("Kamera erişimi reddedildi veya mevcut değil")
       setIsScanning(false)
+      scanningRef.current = false
       console.error("Camera error:", err)
     }
   }
 
   const stopScanning = () => {
     setIsScanning(false)
+    scanningRef.current = false
     if (streamRef.current) {
       streamRef.current.getTracks().forEach((track) => track.stop())
       streamRef.current = null
@@ -56,7 +86,7 @@ export default function QRDogrulamaPage() {
   }
 
   const scanQRCode = () => {
-    if (!videoRef.current || !canvasRef.current) return
+    if (!videoRef.current || !canvasRef.current || !window.jsQR) return
 
     const video = videoRef.current
     const canvas = canvasRef.current
@@ -65,7 +95,7 @@ export default function QRDogrulamaPage() {
     if (!context) return
 
     const scan = () => {
-      if (!isScanning) return
+      if (!scanningRef.current || !isScanning) return
 
       if (video.readyState === video.HAVE_ENOUGH_DATA) {
         canvas.width = video.videoWidth
@@ -74,15 +104,14 @@ export default function QRDogrulamaPage() {
 
         const imageData = context.getImageData(0, 0, canvas.width, canvas.height)
 
-        // Basit QR kod algılama simülasyonu
-        // Gerçek uygulamada jsQR veya benzeri bir kütüphane kullanılmalı
         try {
-          // Bu kısım gerçek QR kod okuma kütüphanesi ile değiştirilmeli
-          // Şimdilik test için rastgele onaylama yapıyoruz
-          if (Math.random() > 0.95) {
-            // %5 şansla "QR kod bulundu" simülasyonu
-            const mockQRContent = "𝕄𝐒🝗𝒍⁰𝓧" // Test için doğru içerik
-            checkQRContent(mockQRContent)
+          const code = window.jsQR(imageData.data, imageData.width, imageData.height, {
+            inversionAttempts: "dontInvert",
+          })
+
+          if (code) {
+            console.log("QR kod bulundu:", code.data)
+            checkQRContent(code.data)
             return
           }
         } catch (err) {
@@ -90,6 +119,7 @@ export default function QRDogrulamaPage() {
         }
       }
 
+      // Tarama devam et
       requestAnimationFrame(scan)
     }
 
@@ -97,6 +127,8 @@ export default function QRDogrulamaPage() {
   }
 
   const checkQRContent = (content: string) => {
+    console.log("QR içeriği kontrol ediliyor:", content)
+
     if (content.includes("𝕄𝐒🝗𝒍⁰𝓧")) {
       setIsApproved(true)
       stopScanning()
@@ -107,7 +139,7 @@ export default function QRDogrulamaPage() {
         window.location.href = "/"
       }, 2000)
     } else {
-      setError("Geçersiz QR kod. Lütfen yetkili QR kodunu okutunuz.")
+      setError(`Geçersiz QR kod. Lütfen yetkili QR kodunu okutunuz. (Okunan: ${content.substring(0, 50)}...)`)
       stopScanning()
     }
   }
@@ -136,9 +168,9 @@ export default function QRDogrulamaPage() {
               </div>
             </div>
 
-            <Button onClick={startScanning} className="w-full">
+            <Button onClick={startScanning} className="w-full" disabled={!jsQRLoaded}>
               <Camera className="h-4 w-4 mr-2" />
-              QR Kod Okutmaya Başla
+              {jsQRLoaded ? "QR Kod Okutmaya Başla" : "QR Okuyucu Yükleniyor..."}
             </Button>
           </div>
         )}
@@ -147,18 +179,23 @@ export default function QRDogrulamaPage() {
           <div className="text-center space-y-4 max-w-md">
             <p className="text-sm text-muted-foreground">QR kodu kamera görüş alanına getirin</p>
             <div className="relative">
-              <video ref={videoRef} className="w-64 h-64 object-cover rounded-lg border" playsInline muted />
+              <video ref={videoRef} className="w-80 h-80 object-cover rounded-lg border" playsInline muted autoPlay />
               <canvas ref={canvasRef} className="hidden" />
               <div className="absolute inset-0 border-2 border-primary rounded-lg pointer-events-none">
-                <div className="absolute top-2 left-2 w-6 h-6 border-t-2 border-l-2 border-primary"></div>
-                <div className="absolute top-2 right-2 w-6 h-6 border-t-2 border-r-2 border-primary"></div>
-                <div className="absolute bottom-2 left-2 w-6 h-6 border-b-2 border-l-2 border-primary"></div>
-                <div className="absolute bottom-2 right-2 w-6 h-6 border-b-2 border-r-2 border-primary"></div>
+                <div className="absolute top-4 left-4 w-8 h-8 border-t-4 border-l-4 border-primary"></div>
+                <div className="absolute top-4 right-4 w-8 h-8 border-t-4 border-r-4 border-primary"></div>
+                <div className="absolute bottom-4 left-4 w-8 h-8 border-b-4 border-l-4 border-primary"></div>
+                <div className="absolute bottom-4 right-4 w-8 h-8 border-b-4 border-r-4 border-primary"></div>
               </div>
+              {/* Tarama çizgisi animasyonu */}
+              <div className="absolute inset-x-4 top-1/2 h-0.5 bg-primary animate-pulse"></div>
             </div>
-            <Button onClick={stopScanning} variant="outline">
-              Taramayı Durdur
-            </Button>
+            <div className="space-y-2">
+              <p className="text-xs text-muted-foreground">QR kodu net bir şekilde görüntüleyin</p>
+              <Button onClick={stopScanning} variant="outline">
+                Taramayı Durdur
+              </Button>
+            </div>
           </div>
         )}
 
@@ -181,7 +218,15 @@ export default function QRDogrulamaPage() {
             <div className="rounded-md bg-destructive/15 p-4">
               <p className="text-destructive text-sm">{error}</p>
             </div>
-            <Button onClick={() => setError(null)} variant="outline">
+            <Button
+              onClick={() => {
+                setError(null)
+                if (!isScanning) {
+                  startScanning()
+                }
+              }}
+              variant="outline"
+            >
               Tekrar Dene
             </Button>
           </div>
