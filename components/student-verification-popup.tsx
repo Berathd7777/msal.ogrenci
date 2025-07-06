@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { X, Loader2 } from "lucide-react"
+import { X, Loader2, QrCode } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import {
@@ -133,6 +133,10 @@ export function StudentVerificationPopup({ isOpen, onClose, onSuccess, platform 
     }
   }
 
+  const handleQRClick = () => {
+    window.location.href = "/qrdogrulama"
+  }
+
   const handleClose = () => {
     setStudentNumber("")
     setError(null)
@@ -183,9 +187,19 @@ export function StudentVerificationPopup({ isOpen, onClose, onSuccess, platform 
             </div>
 
             <DialogFooter>
-              <Button onClick={handleVerify} className="w-full">
-                Doğrula
-              </Button>
+              <div className="relative w-full">
+                <Button onClick={handleVerify} className="w-full pr-12">
+                  Doğrula
+                </Button>
+                <Button
+                  onClick={handleQRClick}
+                  variant="ghost"
+                  size="sm"
+                  className="absolute right-1 top-1/2 -translate-y-1/2 h-8 w-8 p-0 hover:bg-white/20"
+                >
+                  <QrCode className="h-4 w-4" />
+                </Button>
+              </div>
             </DialogFooter>
           </>
         )}
