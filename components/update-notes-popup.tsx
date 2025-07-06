@@ -72,7 +72,7 @@ export function UpdateNotesPopup({ isOpen, onClose }: UpdateNotesPopupProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[700px] max-h-[85vh] overflow-y-auto mx-4 sm:mx-auto">
+      <DialogContent className="w-[95vw] max-w-[700px] max-h-[85vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-lg font-bold flex items-center gap-2 sm:text-2xl">
             <Tag className="h-5 w-5 sm:h-6 sm:w-6" />
@@ -116,16 +116,13 @@ export function UpdateNotesPopup({ isOpen, onClose }: UpdateNotesPopupProps) {
             <div className="space-y-4 sm:space-y-6">
               {releases.map((release, index) => (
                 <div key={release.tag_name} className="border-b pb-4 last:border-b-0 sm:pb-6">
-                  <div className="flex flex-col gap-2 mb-3 sm:flex-row sm:items-center sm:justify-between">
-                    <div className="flex items-center gap-2 flex-wrap">
+                  <div className="mb-3">
+                    <div className="flex items-center justify-between mb-3">
                       <h3 className="text-base font-bold sm:text-xl">{release.name || release.tag_name}</h3>
-                      <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">
-                        {release.tag_name}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-1 text-xs text-muted-foreground sm:text-sm">
-                      <Calendar className="h-3 w-3 sm:h-4 sm:w-4" />
-                      {formatDate(release.published_at)}
+                      <div className="flex items-center gap-1 text-xs text-muted-foreground sm:text-sm">
+                        <Calendar className="h-3 w-3 sm:h-4 sm:w-4" />
+                        {formatDate(release.published_at)}
+                      </div>
                     </div>
                   </div>
 
