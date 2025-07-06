@@ -52,34 +52,33 @@ export function UpdateNotesPopup({ isOpen, onClose }: UpdateNotesPopupProps) {
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString)
-    return date.toLocaleDateString("tr-TR", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    })
+    const day = date.getDate().toString().padStart(2, "0")
+    const month = (date.getMonth() + 1).toString().padStart(2, "0")
+    const year = date.getFullYear()
+    return `${day}.${month}.${year}`
   }
 
   const formatReleaseBody = (body: string) => {
     // Markdown formatını basit HTML'e çevir
     return body
-      .replace(/### (.*)/g, '<h3 class="text-lg font-semibold mt-4 mb-2">$1</h3>')
-      .replace(/## (.*)/g, '<h2 class="text-xl font-bold mt-4 mb-2">$1</h2>')
-      .replace(/# (.*)/g, '<h1 class="text-2xl font-bold mt-4 mb-2">$1</h1>')
+      .replace(/### (.*)/g, '<h3 class="text-sm font-semibold mt-3 mb-1 sm:text-base sm:mt-4 sm:mb-2">$1</h3>')
+      .replace(/## (.*)/g, '<h2 class="text-base font-bold mt-3 mb-1 sm:text-lg sm:mt-4 sm:mb-2">$1</h2>')
+      .replace(/# (.*)/g, '<h1 class="text-lg font-bold mt-3 mb-1 sm:text-xl sm:mt-4 sm:mb-2">$1</h1>')
       .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
       .replace(/\*(.*?)\*/g, "<em>$1</em>")
-      .replace(/- (.*)/g, '<li class="ml-4">• $1</li>')
+      .replace(/- (.*)/g, '<li class="ml-3 text-sm sm:ml-4 sm:text-base">• $1</li>')
       .replace(/\n/g, "<br>")
   }
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[700px] max-h-[80vh] overflow-y-auto">
+      <DialogContent className="sm:max-w-[700px] max-h-[85vh] overflow-y-auto mx-4 sm:mx-auto">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-bold flex items-center gap-2">
-            <Tag className="h-6 w-6" />
+          <DialogTitle className="text-lg font-bold flex items-center gap-2 sm:text-2xl">
+            <Tag className="h-5 w-5 sm:h-6 sm:w-6" />
             Güncelleme Notları
           </DialogTitle>
-          <DialogDescription>
+          <DialogDescription className="text-sm sm:text-base">
             MSAL Öğrenci uygulamasının son sürümlerindeki yenilikler ve düzeltmeler.
           </DialogDescription>
           <button
@@ -93,41 +92,46 @@ export function UpdateNotesPopup({ isOpen, onClose }: UpdateNotesPopupProps) {
 
         <div className="mt-4">
           {loading && (
-            <div className="flex flex-col items-center justify-center py-8">
-              <Loader2 className="h-8 w-8 animate-spin text-primary" />
-              <p className="mt-2 text-sm text-muted-foreground">Güncelleme notları yükleniyor...</p>
+            <div className="flex flex-col items-center justify-center py-6 sm:py-8">
+              <Loader2 className="h-6 w-6 animate-spin text-primary sm:h-8 sm:w-8" />
+              <p className="mt-2 text-xs text-muted-foreground sm:text-sm">Güncelleme notları yükleniyor...</p>
             </div>
           )}
 
           {error && (
-            <div className="rounded-md bg-destructive/15 p-4 text-center">
-              <p className="text-destructive">{error}</p>
-              <Button variant="outline" size="sm" className="mt-2 bg-transparent" onClick={fetchReleases}>
+            <div className="rounded-md bg-destructive/15 p-3 text-center sm:p-4">
+              <p className="text-destructive text-sm">{error}</p>
+              <Button
+                variant="outline"
+                size="sm"
+                className="mt-2 bg-transparent text-xs sm:text-sm"
+                onClick={fetchReleases}
+              >
                 Tekrar Dene
               </Button>
             </div>
           )}
 
           {!loading && !error && releases.length > 0 && (
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {releases.map((release, index) => (
-                <div key={release.tag_name} className="border-b pb-6 last:border-b-0">
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="flex items-center gap-2">
-                      <h3 className="text-xl font-bold">{release.name || release.tag_name}</h3>
+                <div key={release.tag_name} className="border-b pb-4 last:border-b-0 sm:pb-6">
+                  <div className="flex flex-col gap-2 mb-3 sm:flex-row sm:items-center sm:justify-between">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <h3 className="text-base font-bold sm:text-xl">{release.name || release.tag_name}</h3>
                       <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">
                         {release.tag_name}
                       </span>
                     </div>
-                    <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                      <Calendar className="h-4 w-4" />
+                    <div className="flex items-center gap-1 text-xs text-muted-foreground sm:text-sm">
+                      <Calendar className="h-3 w-3 sm:h-4 sm:w-4" />
                       {formatDate(release.published_at)}
                     </div>
                   </div>
 
                   {release.body && (
                     <div
-                      className="prose prose-sm max-w-none text-muted-foreground"
+                      className="prose prose-sm max-w-none text-muted-foreground text-sm sm:text-base"
                       dangerouslySetInnerHTML={{
                         __html: formatReleaseBody(release.body),
                       }}
@@ -139,8 +143,8 @@ export function UpdateNotesPopup({ isOpen, onClose }: UpdateNotesPopupProps) {
           )}
 
           {!loading && !error && releases.length === 0 && (
-            <div className="text-center py-8">
-              <p className="text-muted-foreground">Henüz güncelleme notu bulunamadı.</p>
+            <div className="text-center py-6 sm:py-8">
+              <p className="text-muted-foreground text-sm sm:text-base">Henüz güncelleme notu bulunamadı.</p>
             </div>
           )}
         </div>
