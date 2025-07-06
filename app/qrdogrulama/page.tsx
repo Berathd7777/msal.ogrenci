@@ -99,7 +99,7 @@ export default function QRDogrulamaPage() {
   const checkQRContent = (content: string) => {
     console.log("QR içeriği kontrol ediliyor:", content)
 
-    if (content.includes("𝕄𝐒🝗𝒍⁰𝓧")) {
+    if (content.includes("O0lI1Z2xX")) {
       console.log("QR kod onaylandı!")
       setIsApproved(true)
       stopScanning()
