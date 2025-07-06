@@ -112,11 +112,6 @@ export default function QRDogrulamaPage() {
     }
   }
 
-  // Test için manuel onaylama (geliştirme amaçlı)
-  const handleTestApproval = () => {
-    checkQRContent("𝕄𝐒🝗𝒍⁰𝓧")
-  }
-
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <header className="border-b p-4">
@@ -144,11 +139,6 @@ export default function QRDogrulamaPage() {
             <Button onClick={startScanning} className="w-full">
               <Camera className="h-4 w-4 mr-2" />
               QR Kod Okutmaya Başla
-            </Button>
-
-            {/* Test butonu - sadece geliştirme için */}
-            <Button onClick={handleTestApproval} variant="outline" className="w-full text-xs bg-transparent">
-              Test: Onaylanmış QR Simüle Et
             </Button>
           </div>
         )}
