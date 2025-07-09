@@ -1,4 +1,5 @@
 # MSAL Öğrenci
+[![Destek Ol!](https://img.shields.io/badge/Destek%20Ol!-yellow?style=for-the-badge&logo=buymeacoffee&logoColor=black)](https://coff.ee/brtplus) 
 
 <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/rounded-in-photoretrica%20%284%29-u6Yox6ZWzjPyIcrgivt5FqpFEG15n3.png" alt="MSAL Öğrenci" width="150" style="pointer-events: none;">
 
