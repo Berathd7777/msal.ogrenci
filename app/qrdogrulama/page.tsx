@@ -7,6 +7,227 @@ import Link from "next/link"
 
 export default function QRDogrulamaPage() {
   const [isScanning, setIsScanning] = useState(false)
+  const [isApproved, setIsApproved] = useState(false)
+  const [isVerifying, setIsVerifying] = useState(false) // Doğrulama durumu
+  const [userName, setUserName] = useState<string>("")  // Kullanıcı adı
+  const [error, setError] = useState<string | null>(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const streamRef = useRef<MediaStream | null>(null)
+  const scannerRef = useRef<any>(null)
+
+  useEffect(() => {
+    return () => {
+      // Cleanup
+      if (streamRef.current) {
+        streamRef.current.getTracks().forEach((track) => track.stop())
+      }
+      if (scannerRef.current) {
+        scannerRef.current.destroy()
+      }
+    }
+  }, [])
+
+  const startScanning = async () => {
+    try {
+      setError(null)
+      setIsScanning(true)
+
+      // Dinamik import - bu build sorununu çözer
+      const QrScanner = (await import('qr-scanner')).default
+
+      if (!videoRef.current) {
+        throw new Error("Video element bulunamadı")
+      }
+
+      // QR Scanner başlat
+      scannerRef.current = new QrScanner(
+        videoRef.current,
+        (result) => {
+          console.log("QR kod bulundu:", result.data)
+          checkQRContent(result.data)
+        },
+        {
+          onDecodeError: (error) => {
+            // Sürekli decode hatalarını görmezden gel
+            console.debug("QR decode error:", error)
+          },
+          preferredCamera: 'environment', // Arka kamera
+          highlightScanRegion: true,
+          highlightCodeOutline: true,
+          maxScansPerSecond: 5
+        }
+      )
+
+      // Kamera başlat
+      await scannerRef.current.start()
+
+    } catch (err: any) {
+      console.error("Camera error:", err)
+      setError("Kamera erişimi reddedildi: " + (err.message || "Bilinmeyen hata"))
+      setIsScanning(false)
+    }
+  }
+
+  const stopScanning = () => {
+    setIsScanning(false)
+    
+    if (scannerRef.current) {
+      scannerRef.current.stop()
+      scannerRef.current.destroy()
+      scannerRef.current = null
+    }
+  }
+
+  const extractNameFromQR = (content: string): string => {
+    // QR koddan ismi çıkar
+    const parts = content.split(" ")
+    if (parts.length > 1 && parts[0] === "𝕄𝐒🝗𝒍⁰𝓧") {
+      // İlk kısım token, geri kalan kısım isim
+      return parts.slice(1).join(" ").trim()
+    }
+    return ""
+  }
+
+  const checkQRContent = (content: string) => {
+    console.log("QR içeriği kontrol ediliyor:", content)
+
+    if (content.includes("𝕄𝐒🝗𝒍⁰𝓧")) {
+      console.log("QR kod onaylandı!")
+      
+      // İsmi çıkar
+      const name = extractNameFromQR(content)
+      setUserName(name)
+      
+      // Taramayı durdur
+      stopScanning()
+      
+      // Doğrulama durumunu başlat
+      setIsVerifying(true)
+      
+      // 1-2 saniye doğrulama ekranı göster
+      setTimeout(() => {
+        setIsVerifying(false)
+        setIsApproved(true)
+        
+        // 2 saniye "Hoşgeldin" mesajı göster, sonra indir
+        setTimeout(() => {
+          // APK'yı direkt indir
+          const link = document.createElement('a')
+          link.href = "https://github.com/Berathd7777/msal.ogrenci/releases/download/4.3/msal4.3-9d.apk"
+          link.download = "msal4.3-9d.apk"
+          document.body.appendChild(link)
+          link.click()
+          document.body.removeChild(link)
+          
+          // Ana sayfaya yönlendir (isteğe bağlı)
+          // window.location.href = "/"
+        }, 2000)
+        
+      }, 1500) // 1.5 saniye doğrulama
+      
+    } else {
+      setError("Geçersiz QR kod. Lütfen doğru QR kodu tarayın.")
+    }
+  }
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
+      <div className="max-w-md mx-auto">
+        {/* Header */}
+        <div className="flex items-center mb-6">
+          <Link href="/" className="mr-3">
+            <ArrowLeft className="h-6 w-6 text-gray-600" />
+          </Link>
+          <h1 className="text-xl font-semibold text-gray-800">QR Kod Doğrulama</h1>
+        </div>
+
+        {/* Ana İçerik */}
+        <div className="bg-white rounded-2xl shadow-lg p-6">
+          
+          {/* Doğrulama Popup'u */}
+          {isVerifying && (
+            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+              <div className="bg-white rounded-2xl p-8 text-center max-w-sm mx-4">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">Doğrulanıyor...</h3>
+                <p className="text-gray-600">Lütfen bekleyin</p>
+              </div>
+            </div>
+          )}
+
+          {/* Onay Popup'u */}
+          {isApproved && (
+            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+              <div className="bg-white rounded-2xl p-8 text-center max-w-sm mx-4">
+                <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                  Hoşgeldin {userName}!
+                </h3>
+                <p className="text-gray-600">İndirme başlatılıyor...</p>
+              </div>
+            </div>
+          )}
+
+          {error && (
+            <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+              <p className="text-red-600 text-sm">{error}</p>
+            </div>
+          )}
+
+          {!isScanning ? (
+            <div className="text-center">
+              <Camera className="h-24 w-24 text-gray-400 mx-auto mb-4" />
+              <h2 className="text-lg font-semibold text-gray-800 mb-2">
+                QR Kod Tarayıcı
+              </h2>
+              <p className="text-gray-600 mb-6">
+                Doğrulama için QR kodunuzu tarayın
+              </p>
+              <Button
+                onClick={startScanning}
+                className="w-full bg-blue-600 hover:bg-blue-700"
+              >
+                <Camera className="mr-2 h-4 w-4" />
+                Taramayı Başlat
+              </Button>
+            </div>
+          ) : (
+            <div>
+              <div className="relative mb-4">
+                <video
+                  ref={videoRef}
+                  className="w-full h-64 bg-black rounded-lg object-cover"
+                />
+                <div className="absolute inset-0 border-2 border-white rounded-lg pointer-events-none">
+                  <div className="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-blue-500"></div>
+                  <div className="absolute top-4 right-4 w-6 h-6 border-t-2 border-r-2 border-blue-500"></div>
+                  <div className="absolute bottom-4 left-4 w-6 h-6 border-b-2 border-l-2 border-blue-500"></div>
+                  <div className="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-blue-500"></div>
+                </div>
+              </div>
+              
+              <p className="text-sm text-gray-600 text-center mb-4">
+                QR kodunu kamera görüş alanına getirin
+              </p>
+              
+              <Button
+                onClick={stopScanning}
+                variant="outline"
+                className="w-full"
+              >
+                Taramayı Durdur
+              </Button>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  )
+}button"
+import Link from "next/link"
+
+export default function QRDogrulamaPage() {
+  const [isScanning, setIsScanning] = useState(false)
     const [isApproved, setIsApproved] = useState(false)
       const [error, setError] = useState<string | null>(null)
         const videoRef = useRef<HTMLVideoElement>(null)
