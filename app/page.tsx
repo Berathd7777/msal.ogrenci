@@ -467,7 +467,7 @@ export default function Home() {
               <p className="text-sm opacity-80 mt-2">
                 * MSAL Öğrenci uygulaması Android 7.0 ve üzeri sürümlerde çalışmaktadır.
               </p>
-              <p className="text-sm opacity-80 mt-2">* 9/D ve 9/E sınıfları için özel olarak geliştirilmiştir.</p>
+              <p className="text-sm opacity-80 mt-2">* 10/D ve 10/E sınıfları için özel olarak geliştirilmiştir.</p>
             </div>
           </div>
         </section>
