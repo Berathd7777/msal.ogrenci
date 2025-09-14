@@ -20,11 +20,11 @@ export default function Home() {
   const [isUpdateNotesOpen, setIsUpdateNotesOpen] = useState(false)
   const [currentPlatform, setCurrentPlatform] = useState<"android" | "ios">("android")
   const [verifiedStudentName, setVerifiedStudentName] = useState("")
-  const [verifiedStudentClass, setVerifiedStudentClass] = useState<"9D" | "9E" | "">("")
+  const [verifiedStudentClass, setVerifiedStudentClass] = useState<"10D" | "10E" | "">("")
   const [latestVersion, setLatestVersion] = useState("4.3") // Varsayılan sürüm
   const [downloadLinks, setDownloadLinks] = useState({
-    "9D": "https://github.com/Berathd7777/msal.ogrenci/releases/download/4.3/msal4.3-9d.apk",
-    "9E": "https://github.com/Berathd7777/msal.ogrenci/releases/download/4.3/msal4.3-9e.apk",
+    "10D": "https://github.com/Berathd7777/msal.ogrenci/releases/download/4.3/msal4.3-9d.apk",
+    "10E": "https://github.com/Berathd7777/msal.ogrenci/releases/download/4.3/msal4.3-9e.apk",
   })
 
   useEffect(() => {
@@ -35,8 +35,8 @@ export default function Home() {
         const version = data.tag_name
         setLatestVersion(version)
         setDownloadLinks({
-          "9D": `https://github.com/Berathd7777/msal.ogrenci/releases/download/${version}/msal${version}-9d.apk`,
-          "9E": `https://github.com/Berathd7777/msal.ogrenci/releases/download/${version}/msal${version}-9e.apk`,
+          "10D": `https://github.com/Berathd7777/msal.ogrenci/releases/download/${version}/msal${version}-10d.apk`,
+          "10E": `https://github.com/Berathd7777/msal.ogrenci/releases/download/${version}/msal${version}-10e.apk`,
         })
       } catch (error) {
         console.error("GitHub sürüm bilgisi çekme hatası:", error)
@@ -62,7 +62,7 @@ export default function Home() {
   }
 
   // Öğrenci doğrulama başarılı olduğunda
-  const handleVerificationSuccess = (studentName: string, studentClass: "9D" | "9E") => {
+  const handleVerificationSuccess = (studentName: string, studentClass: "10D" | "10E") => {
     setIsStudentVerificationOpen(false)
     setVerifiedStudentName(studentName)
     setVerifiedStudentClass(studentClass)
@@ -80,10 +80,10 @@ export default function Home() {
 
     if (currentPlatform === "android") {
       // Android için sınıfa göre doğru APK indirme bağlantısına yönlendir
-      if (verifiedStudentClass === "9D") {
-        window.open(downloadLinks["9D"], "_blank")
-      } else if (verifiedStudentClass === "9E") {
-        window.open(downloadLinks["9E"], "_blank")
+      if (verifiedStudentClass === "10D") {
+        window.open(downloadLinks["10D"], "_blank")
+      } else if (verifiedStudentClass === "10E") {
+        window.open(downloadLinks["10E"], "_blank")
       }
     } else {
       // iOS için kurulum talimatları popup'ını göster (sadece 9D için)
