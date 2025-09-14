@@ -116,7 +116,7 @@ export function StudentVerificationPopup({ isOpen, onClose, onSuccess, platform 
     if (student9D) {
       // 9D sınıfı öğrencisi
       setError(null)
-      onSuccess(student9D.name, "9D")
+      onSuccess(student9D.name, "10D")
     } else if (student9E) {
       // 9E sınıfı öğrencisi
       if (platform === "ios") {
