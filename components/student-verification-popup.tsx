@@ -22,7 +22,7 @@ interface Student {
 interface StudentVerificationPopupProps {
   isOpen: boolean
   onClose: () => void
-  onSuccess: (studentName: string, studentClass: "9D" | "9E") => void
+  onSuccess: (studentName: string, studentClass: "10D" | "10E") => void
   platform: "android" | "ios"
 }
 
@@ -41,10 +41,10 @@ export function StudentVerificationPopup({ isOpen, onClose, onSuccess, platform 
 
       // Her iki sınıfın öğrenci listelerini paralel olarak yükle
       Promise.all([
-        fetch("https://raw.githubusercontent.com/Berathd7777/msal-dosyalar/refs/heads/main/9d/students.js").then(
+        fetch("https://raw.githubusercontent.com/Berathd7777/msal-dosyalar/refs/heads/main/10d/students.js").then(
           (res) => res.text(),
         ),
-        fetch("https://raw.githubusercontent.com/Berathd7777/msal-dosyalar/refs/heads/main/9e/students.js").then(
+        fetch("https://raw.githubusercontent.com/Berathd7777/msal-dosyalar/refs/heads/main/10e/students.js").then(
           (res) => res.text(),
         ),
       ])
@@ -121,15 +121,15 @@ export function StudentVerificationPopup({ isOpen, onClose, onSuccess, platform 
       // 9E sınıfı öğrencisi
       if (platform === "ios") {
         // iOS için 9E henüz desteklenmiyor
-        setError("iOS uygulaması şu an sadece 9/D sınıfı için kullanılabilir. 9/E sınıfı için çok yakında!")
+        setError("iOS uygulaması şu an sadece 10/D sınıfı için kullanılabilir. 10/E sınıfı için çok yakında!")
       } else {
         // Android için 9E destekleniyor
         setError(null)
-        onSuccess(student9E.name, "9E")
+        onSuccess(student9E.name, "10E")
       }
     } else {
       // Öğrenci bulunamadı
-      setError("Bu uygulama sadece 9/D ve 9/E sınıfları öğrencileri için özel olarak geliştirilmiştir.")
+      setError("Bu uygulama sadece 10/D ve 10/E sınıfları öğrencileri için özel olarak geliştirilmiştir.")
     }
   }
 
