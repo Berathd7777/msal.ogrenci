@@ -99,7 +99,7 @@ export default function Home() {
   // iOS kurulum talimatları onaylandığında
   const handleIosPopupConfirm = () => {
     setIsIosPopupOpen(false)
-    window.open("https://msalweb.vercel.app/", "_blank")
+    window.open("https://msalweb.netlify.app/", "_blank")
   }
 
   // Güncelleme notları popup'ını aç
@@ -118,7 +118,7 @@ export default function Home() {
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/rounded-in-photoretrica%20%284%29-u6Yox6ZWzjPyIcrgivt5FqpFEG15n3.png"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/rounded-in-photoretrica%20%284%29-QjTedJjd2Ofk6XmshHvHZmVcTNRS2H.png"
               alt="MSAL Öğrenci Logo"
               width={40}
               height={40}
@@ -148,7 +148,7 @@ export default function Home() {
             <div className="flex flex-col justify-center space-y-4">
               <div className="flex justify-center md:justify-start mb-6">
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/rounded-in-photoretrica%20%284%29-u6Yox6ZWzjPyIcrgivt5FqpFEG15n3.png"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/rounded-in-photoretrica%20%284%29-QjTedJjd2Ofk6XmshHvHZmVcTNRS2H.png"
                   alt="MSAL Öğrenci Logo"
                   width={100}
                   height={100}
@@ -186,7 +186,7 @@ export default function Home() {
             <div className="flex items-center justify-center">
               <div className="relative h-[600px] w-[300px] overflow-hidden rounded-[40px] border-8 border-gray-800 shadow-xl">
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Resim%201.jpg-qe2We8HuGAvXNB8Ll0ZWTd4FsBQpeg.jpeg"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/Resim%201.jpg-nM3iTfhrOXo0tK6K0DKY0FHkjaA3Oc.jpeg"
                   alt="MSAL Öğrenci Uygulaması Ana Ekran"
                   fill
                   className="object-cover"
@@ -365,7 +365,7 @@ export default function Home() {
               <div className="min-w-[250px] snap-center flex-shrink-0">
                 <div className="relative h-[500px] w-[250px] overflow-hidden rounded-[30px] border-4 border-gray-800 shadow-lg">
                   <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Resim%201.jpg-qe2We8HuGAvXNB8Ll0ZWTd4FsBQpeg.jpeg"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/Resim%201.jpg-nM3iTfhrOXo0tK6K0DKY0FHkjaA3Oc.jpeg"
                     alt="MSAL Öğrenci Ana Ekran"
                     fill
                     className="object-cover"
@@ -376,7 +376,7 @@ export default function Home() {
               <div className="min-w-[250px] snap-center flex-shrink-0">
                 <div className="relative h-[500px] w-[250px] overflow-hidden rounded-[30px] border-4 border-gray-800 shadow-lg">
                   <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Resim%202.jpg-9nGW2aUTnm1iZyBXjLbuxmqpkc5EXt.jpeg"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/Resim%202.jpg-7HdddeYeVGtmOCvzIvD5NeL25Ot4kE.jpeg"
                     alt="MSAL Öğrenci Ödevler Ekranı"
                     fill
                     className="object-cover"
@@ -387,7 +387,7 @@ export default function Home() {
               <div className="min-w-[250px] snap-center flex-shrink-0">
                 <div className="relative h-[500px] w-[250px] overflow-hidden rounded-[30px] border-4 border-gray-800 shadow-lg">
                   <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Resim%203.jpg-LoWszhZcM0NmEyQf1nlvyGfCJiDVJn.jpeg"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/Resim%203.jpg-bx6bdOOzfXEBWoeEt3v2AKDgiQtGwD.jpeg"
                     alt="MSAL Öğrenci E-Cevap Ekranı"
                     fill
                     className="object-cover"
@@ -398,7 +398,7 @@ export default function Home() {
               <div className="min-w-[250px] snap-center flex-shrink-0">
                 <div className="relative h-[500px] w-[250px] overflow-hidden rounded-[30px] border-4 border-gray-800 shadow-lg">
                   <Image
-                    src="https://i.hizliresim.com/2da01ws.jpg"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/2da01ws-9K42yOrh8mjMSu1UavwCThMq8eJTso.jpg"
                     alt="Öğrenci Bilgi Ekranı"
                     fill
                     className="object-cover"
@@ -409,7 +409,7 @@ export default function Home() {
               <div className="min-w-[250px] snap-center flex-shrink-0">
                 <div className="relative h-[500px] w-[250px] overflow-hidden rounded-[30px] border-4 border-gray-800 shadow-lg">
                   <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Resim%204.jpg-YGC8UaM7QTdGeHsvpkzLlJFbgqZnCw.jpeg"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/Resim%204.jpg-UHGODnJiHf37IsCHDjo33MbMclYVzG.jpeg"
                     alt="MSAL Öğrenci Yazılı Tarihleri Ekranı"
                     fill
                     className="object-cover"
@@ -420,7 +420,7 @@ export default function Home() {
               <div className="min-w-[250px] snap-center flex-shrink-0">
                 <div className="relative h-[500px] w-[250px] overflow-hidden rounded-[30px] border-4 border-gray-800 shadow-lg">
                   <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Resim%205.jpg-c5vAyCz9pjZUHsqGPrvjLwtD9Cep0n.jpeg"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/Resim%205.jpg-iy3q4pr9fSWKf6zpBuzKzPpeijN06B.jpeg"
                     alt="MSAL Öğrenci Ders Programı Ekranı"
                     fill
                     className="object-cover"
@@ -476,7 +476,7 @@ export default function Home() {
         <div className="container flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div className="flex items-center gap-2">
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/rounded-in-photoretrica%20%284%29-u6Yox6ZWzjPyIcrgivt5FqpFEG15n3.png"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/rounded-in-photoretrica%20%284%29-QjTedJjd2Ofk6XmshHvHZmVcTNRS2H.png"
               alt="MSAL Öğrenci Logo"
               width={30}
               height={30}
@@ -486,7 +486,7 @@ export default function Home() {
           </div>
           <div className="flex items-center gap-4">
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/works_with_android_badge_primary-gHChK5GCDjHeSvruJvkN2z7Aa2YBWv.png"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/works_with_android_badge_primary-02PhCxyLn4cn4i9BYJxp1LfWG1vtLb.png"
               alt="Works with Android"
               width={80}
               height={27}
