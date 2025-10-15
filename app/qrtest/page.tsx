@@ -10,14 +10,21 @@ export default function QRTestPage() {
   const handleOpenApp = () => {
     setIsOpening(true)
 
-    // Try to open the Android app directly
-    window.location.href = "intent://msalogrenci/#Intent;scheme=https;package=com.hbk.msalrenci;end"
+    // Try to open the app with custom URI scheme first
+    const appUri = "msalogrenci://open"
+    window.location.href = appUri
 
-    // Fallback after timeout - redirect to download page if app didn't open
+    // Fallback: try Android intent
+    setTimeout(() => {
+      const intent = `intent://open#Intent;scheme=msalogrenci;package=com.hbk.msalrenci;S.browser_fallback_url=${encodeURIComponent("https://msalogrenci.vercel.app/#download")};end`
+      window.location.href = intent
+    }, 500)
+
+    // Final fallback after timeout - redirect to download page if app didn't open
     setTimeout(() => {
       window.location.href = "https://msalogrenci.vercel.app/#download"
       setIsOpening(false)
-    }, 2000)
+    }, 3000)
   }
 
   return (
