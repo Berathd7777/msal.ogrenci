@@ -1,12 +1,10 @@
 "use client"
 
 import type React from "react"
-
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { BookOpen, Calendar, ChevronRight, Download, FileText, Search, Users, Palette, Tag } from "lucide-react"
-
 import { Button } from "@/components/ui/button"
 import { IosPopup } from "@/components/ios-popup"
 import { StudentVerificationPopup } from "@/components/student-verification-popup"
@@ -186,7 +184,7 @@ export default function Home() {
             <div className="flex items-center justify-center">
               <div className="relative h-[600px] w-[300px] overflow-hidden rounded-[40px] border-8 border-gray-800 shadow-xl">
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/Resim%201.jpg-nM3iTfhrOXo0tK6K0DKY0FHkjaA3Oc.jpeg"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_2025-10-21-18-02-56-671_com.hbk.msalrenci-Cgf6rPov7Fa2E3g8AHsnHh4GghunUz.jpg"
                   alt="MSAL Öğrenci Uygulaması Ana Ekran"
                   fill
                   className="object-cover"
@@ -259,6 +257,24 @@ export default function Home() {
                 <h3 className="text-xl font-bold">Ders Programı</h3>
                 <p className="text-center text-muted-foreground">
                   Haftalık ders programınızı görüntüleyin ve günlük derslerinizi takip edin.
+                </p>
+              </div>
+              <div className="flex flex-col items-center space-y-2 rounded-lg border bg-background p-6 shadow-sm">
+                <div className="h-12 w-12 rounded-full bg-blue-500 flex items-center justify-center">
+                  <FileText className="h-6 w-6 text-white" />
+                </div>
+                <h3 className="text-xl font-bold">HocaNet</h3>
+                <p className="text-center text-muted-foreground">
+                  Alanında uzman hocaların konu anlatım ve soru çözüm videolarına ulaşın.
+                </p>
+              </div>
+              <div className="flex flex-col items-center space-y-2 rounded-lg border bg-background p-6 shadow-sm">
+                <div className="h-12 w-12 rounded-full bg-blue-500 flex items-center justify-center">
+                  <FileText className="h-6 w-6 text-white" />
+                </div>
+                <h3 className="text-xl font-bold">Haberler</h3>
+                <p className="text-center text-muted-foreground">
+                  Eğitim dünyasından en son haberler, sınav duyuruları ve önemli gelişmeleri takip edin.
                 </p>
               </div>
             </div>
@@ -365,8 +381,8 @@ export default function Home() {
               <div className="min-w-[250px] snap-center flex-shrink-0">
                 <div className="relative h-[500px] w-[250px] overflow-hidden rounded-[30px] border-4 border-gray-800 shadow-lg">
                   <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/Resim%201.jpg-nM3iTfhrOXo0tK6K0DKY0FHkjaA3Oc.jpeg"
-                    alt="MSAL Öğrenci Ana Ekran"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_2025-10-21-18-02-56-671_com.hbk.msalrenci-Cgf6rPov7Fa2E3g8AHsnHh4GghunUz.jpg"
+                    alt="MSAL Öğrenci Uygulaması Ana Ekran"
                     fill
                     className="object-cover"
                   />
@@ -376,7 +392,7 @@ export default function Home() {
               <div className="min-w-[250px] snap-center flex-shrink-0">
                 <div className="relative h-[500px] w-[250px] overflow-hidden rounded-[30px] border-4 border-gray-800 shadow-lg">
                   <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/Resim%202.jpg-7HdddeYeVGtmOCvzIvD5NeL25Ot4kE.jpeg"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_2025-10-21-18-03-05-328_com.hbk.msalrenci-2iBpVbrsjekoN3i26md51r0WV51uaZ.jpg"
                     alt="MSAL Öğrenci Ödevler Ekranı"
                     fill
                     className="object-cover"
@@ -387,29 +403,18 @@ export default function Home() {
               <div className="min-w-[250px] snap-center flex-shrink-0">
                 <div className="relative h-[500px] w-[250px] overflow-hidden rounded-[30px] border-4 border-gray-800 shadow-lg">
                   <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/Resim%203.jpg-bx6bdOOzfXEBWoeEt3v2AKDgiQtGwD.jpeg"
-                    alt="MSAL Öğrenci E-Cevap Ekranı"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_2025-10-21-18-04-16-036_com.hbk.msalrenci-G6gjGASy0ehZQpDJY7K95vwkMF0IFl.jpg"
+                    alt="MSAL Öğrenci Sınıf Bilgisi"
                     fill
                     className="object-cover"
                   />
                 </div>
-                <p className="text-center mt-2 font-medium">E-Cevap</p>
+                <p className="text-center mt-2 font-medium">Sınıf Bilgisi</p>
               </div>
               <div className="min-w-[250px] snap-center flex-shrink-0">
                 <div className="relative h-[500px] w-[250px] overflow-hidden rounded-[30px] border-4 border-gray-800 shadow-lg">
                   <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/2da01ws-9K42yOrh8mjMSu1UavwCThMq8eJTso.jpg"
-                    alt="Öğrenci Bilgi Ekranı"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <p className="text-center mt-2 font-medium">Öğrenci Bilgi</p>
-              </div>
-              <div className="min-w-[250px] snap-center flex-shrink-0">
-                <div className="relative h-[500px] w-[250px] overflow-hidden rounded-[30px] border-4 border-gray-800 shadow-lg">
-                  <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/Resim%204.jpg-UHGODnJiHf37IsCHDjo33MbMclYVzG.jpeg"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_2025-10-21-18-03-23-119_com.hbk.msalrenci-HZBizEeIjUWFH028NZUcNYIZZr1Ujl.jpg"
                     alt="MSAL Öğrenci Yazılı Tarihleri Ekranı"
                     fill
                     className="object-cover"
@@ -420,13 +425,35 @@ export default function Home() {
               <div className="min-w-[250px] snap-center flex-shrink-0">
                 <div className="relative h-[500px] w-[250px] overflow-hidden rounded-[30px] border-4 border-gray-800 shadow-lg">
                   <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/Resim%205.jpg-iy3q4pr9fSWKf6zpBuzKzPpeijN06B.jpeg"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_2025-10-21-18-03-33-169_com.hbk.msalrenci-Tsm6jYxajvJJF48mhB8oERoBOumsY0.jpg"
                     alt="MSAL Öğrenci Ders Programı Ekranı"
                     fill
                     className="object-cover"
                   />
                 </div>
                 <p className="text-center mt-2 font-medium">Ders Programı</p>
+              </div>
+              <div className="min-w-[250px] snap-center flex-shrink-0">
+                <div className="relative h-[500px] w-[250px] overflow-hidden rounded-[30px] border-4 border-gray-800 shadow-lg">
+                  <Image
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_2025-10-21-18-03-38-757_com.hbk.msalrenci-GtFWil93KPt4FXqRGMkkQjHmsgJLgE.jpg"
+                    alt="MSAL Öğrenci HocaNet Ekranı"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <p className="text-center mt-2 font-medium">HocaNet</p>
+              </div>
+              <div className="min-w-[250px] snap-center flex-shrink-0">
+                <div className="relative h-[500px] w-[250px] overflow-hidden rounded-[30px] border-4 border-gray-800 shadow-lg">
+                  <Image
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_2025-10-21-18-03-43-980_com.hbk.msalrenci-wHXgsMokzfyfxKoIdfycY8cj1n9yFk.jpg"
+                    alt="MSAL Öğrenci Haberler Ekranı"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <p className="text-center mt-2 font-medium">Haberler</p>
               </div>
             </div>
           </div>
@@ -530,7 +557,7 @@ export default function Home() {
       {/* iOS Kurulum Talimatları Popup */}
       <IosPopup isOpen={isIosPopupOpen} onClose={handleIosPopupClose} onConfirm={handleIosPopupConfirm} />
 
-      {/* Güncelleme Notları Popup */}
+      {/* Güncelleme Notları */}
       <UpdateNotesPopup isOpen={isUpdateNotesOpen} onClose={handleUpdateNotesClose} />
 
       {/* Elevenlabs Convai Widget */}
