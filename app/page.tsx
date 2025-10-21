@@ -4,7 +4,7 @@ import type React from "react"
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { BookOpen, Calendar, ChevronRight, Download, FileText, Search, Users, Palette, Tag } from "lucide-react"
+import { BookOpen, Calendar, ChevronRight, Download, FileText, Search, Users, Tag } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { IosPopup } from "@/components/ios-popup"
 import { StudentVerificationPopup } from "@/components/student-verification-popup"
@@ -293,17 +293,6 @@ export default function Home() {
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
                     <div className="h-10 w-10 rounded-full bg-purple-500 flex items-center justify-center">
-                      <Palette className="h-5 w-5 text-white" />
-                    </div>
-                    <h3 className="text-xl font-bold">Dinamik Renk Teması</h3>
-                  </div>
-                  <p className="text-muted-foreground">
-                    Material You teknolojisi ile uygulama teması cihazınızın duvar kağıdına göre otomatik olarak uyum
-                    sağlar.
-                  </p>
-
-                  <div className="flex items-center gap-3 mt-6">
-                    <div className="h-10 w-10 rounded-full bg-purple-500 flex items-center justify-center">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="20"
@@ -323,9 +312,7 @@ export default function Home() {
                     </div>
                     <h3 className="text-xl font-bold">Aydınlık/Karanlık Mod</h3>
                   </div>
-                  <p className="text-muted-foreground">
-                    Göz yorgunluğunu azaltmak için karanlık mod desteği ve otomatik tema değiştirme özelliği.
-                  </p>
+                  <p className="text-muted-foreground">Göz yorgunluğunu azaltmak için karanlık mod desteği.</p>
 
                   <div className="flex items-center gap-3 mt-6">
                     <div className="h-10 w-10 rounded-full bg-purple-500 flex items-center justify-center">
@@ -409,7 +396,7 @@ export default function Home() {
                     className="object-cover"
                   />
                 </div>
-                <p className="text-center mt-2 font-medium">Sınıf Bilgisi</p>
+                <p className="text-center mt-2 font-medium">Öğrenci Bilgi</p>
               </div>
               <div className="min-w-[250px] snap-center flex-shrink-0">
                 <div className="relative h-[500px] w-[250px] overflow-hidden rounded-[30px] border-4 border-gray-800 shadow-lg">
