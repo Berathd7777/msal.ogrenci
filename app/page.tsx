@@ -279,78 +279,16 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Material Design 3 Özelliği */}
-            <div className="mt-16">
-              <div className="space-y-4 text-center mb-8">
-                <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl">Yeni Tasarım: Material Design 3</h2>
-                <p className="mx-auto max-w-[700px] text-muted-foreground">
-                  MSAL Öğrenci uygulaması artık Google'ın en yeni tasarım dili Material Design 3 ile yenilendi. Daha
-                  modern, daha kullanıcı dostu ve daha estetik bir deneyim için tasarlandı.
-                </p>
-              </div>
-
-              <div className="grid gap-8 md:grid-cols-2 items-center">
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <div className="h-10 w-10 rounded-full bg-purple-500 flex items-center justify-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="text-white"
-                      >
-                        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
-                        <path d="M19 3v4"></path>
-                        <path d="M21 5h-4"></path>
-                      </svg>
-                    </div>
-                    <h3 className="text-xl font-bold">Aydınlık/Karanlık Mod</h3>
-                  </div>
-                  <p className="text-muted-foreground">Göz yorgunluğunu azaltmak için karanlık mod desteği.</p>
-
-                  <div className="flex items-center gap-3 mt-6">
-                    <div className="h-10 w-10 rounded-full bg-purple-500 flex items-center justify-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="text-white"
-                      >
-                        <rect width="18" height="18" x="3" y="3" rx="2"></rect>
-                        <path d="M9 14v1"></path>
-                        <path d="M9 19v2"></path>
-                        <path d="M9 3v2"></path>
-                        <path d="M9 9v1"></path>
-                      </svg>
-                    </div>
-                    <h3 className="text-xl font-bold">Yeni Arayüz Bileşenleri</h3>
-                  </div>
-                  <p className="text-muted-foreground">
-                    Yuvarlak köşeler, gelişmiş animasyonlar ve daha iyi erişilebilirlik için yeniden tasarlanmış arayüz.
-                  </p>
-                </div>
-
-                <div className="relative w-full max-w-[500px] mx-auto overflow-hidden rounded-lg">
-                  <Image
-                    src="/images/material-design-3.png"
-                    alt="Material Design 3 Arayüzü"
-                    width={500}
-                    height={400}
-                    className="object-contain"
-                  />
-                </div>
+            {/* E-Cevap with Google Gemini */}
+            <div className="mt-16 flex justify-center">
+              <div className="relative w-full max-w-[900px] mx-auto">
+                <Image
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Yaz%C4%B1l%C4%B1%20%C3%96rnekleri%20eklendi%20kopyas%C4%B1_20251024_191536_0000-JCYV6F50bsfV4XTpoEr0m1pCX6VyGX.png"
+                  alt="E-Cevap with Google Gemini"
+                  width={900}
+                  height={600}
+                  className="object-contain rounded-lg"
+                />
               </div>
             </div>
           </div>
