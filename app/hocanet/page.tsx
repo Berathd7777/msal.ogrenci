@@ -20,10 +20,7 @@ export default function HocaNetPage() {
     },
   ]
 
-  const allChannels = [
-    "/images/hocanet/fizikfinito.png",
-    "/images/hocanet/cografyanin-kodlari.png",
-    "/images/hocanet/partikul-matematik.jpg",
+  const additionalChannels = [
     "/images/hocanet/channel1.png",
     "/images/hocanet/channel2.jpg",
     "/images/hocanet/channel3.jpg",
@@ -82,46 +79,36 @@ export default function HocaNetPage() {
               </div>
             ))}
           </div>
-          <p className="text-center text-2xl font-semibold text-muted-foreground mt-12">ve daha fazlası...</p>
+          <p className="text-center text-2xl font-semibold text-muted-foreground mt-12 mb-8">ve daha fazlası...</p>
+
           {/* Scrolling Channel Logos */}
           <div className="relative overflow-hidden py-8">
             <div className="relative">
               {/* Gradient Overlays */}
-              <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-background to-transparent z-10" />
-              <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-background to-transparent z-10" />
+              <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white via-white to-transparent z-10 pointer-events-none" />
+              <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white via-white to-transparent z-10 pointer-events-none" />
 
               {/* Scrolling Container */}
-              <div className="flex gap-8 animate-scroll">
-                {/* First set */}
-                {allChannels.map((logo, index) => (
-                  <div
-                    key={`first-${index}`}
-                    className="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-white shadow-lg hover:scale-110 transition-transform"
-                  >
-                    <Image
-                      src={logo || "/placeholder.svg"}
-                      alt={`Kanal ${index + 1}`}
-                      width={128}
-                      height={128}
-                      className="object-cover"
-                    />
-                  </div>
-                ))}
-                {/* Duplicate set for seamless loop */}
-                {allChannels.map((logo, index) => (
-                  <div
-                    key={`second-${index}`}
-                    className="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-white shadow-lg hover:scale-110 transition-transform"
-                  >
-                    <Image
-                      src={logo || "/placeholder.svg"}
-                      alt={`Kanal ${index + 1}`}
-                      width={128}
-                      height={128}
-                      className="object-cover"
-                    />
-                  </div>
-                ))}
+              <div className="flex gap-8">
+                <div className="flex gap-8 animate-scroll">
+                  {additionalChannels
+                    .concat(additionalChannels)
+                    .concat(additionalChannels)
+                    .map((logo, index) => (
+                      <div
+                        key={`scroll-${index}`}
+                        className="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-white shadow-lg hover:scale-110 transition-transform"
+                      >
+                        <Image
+                          src={logo || "/placeholder.svg"}
+                          alt={`Kanal ${index + 1}`}
+                          width={128}
+                          height={128}
+                          className="object-cover"
+                        />
+                      </div>
+                    ))}
+                </div>
               </div>
             </div>
           </div>
@@ -149,12 +136,14 @@ export default function HocaNetPage() {
             transform: translateX(0);
           }
           100% {
-            transform: translateX(-50%);
+            transform: translateX(calc(-100% / 3));
           }
         }
 
         .animate-scroll {
-          animation: scroll 15s linear infinite;
+          animation: scroll 10s linear infinite;
+          display: flex;
+          gap: 2rem;
         }
 
         .animate-scroll:hover {
