@@ -116,7 +116,7 @@ export default function Home() {
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/rounded-in-photoretrica%20%284%29-QjTedJjd2Ofk6XmshHvHZmVcTNRS2H.png"
+              src="/images/design-mode-images-rounded-in-photoretrica-20-284-29.png"
               alt="MSAL Öğrenci Logo"
               width={40}
               height={40}
@@ -149,7 +149,7 @@ export default function Home() {
             <div className="flex flex-col justify-center space-y-4">
               <div className="flex justify-center md:justify-start mb-6">
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/rounded-in-photoretrica%20%284%29-QjTedJjd2Ofk6XmshHvHZmVcTNRS2H.png"
+                  src="/images/design-mode-images-rounded-in-photoretrica-20-284-29.png"
                   alt="MSAL Öğrenci Logo"
                   width={100}
                   height={100}
@@ -187,7 +187,7 @@ export default function Home() {
             <div className="flex items-center justify-center">
               <div className="relative h-[600px] w-[300px] overflow-hidden rounded-[40px] border-8 border-gray-800 shadow-xl">
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_2025-10-21-18-02-56-671_com.hbk.msalrenci-Cgf6rPov7Fa2E3g8AHsnHh4GghunUz.jpg"
+                  src="/images/screenshot-2025-10-21-18-02-56-671-com.jpg"
                   alt="MSAL Öğrenci Uygulaması Ana Ekran"
                   fill
                   className="object-cover"
@@ -274,22 +274,14 @@ export default function Home() {
                   Alanında uzman hocaların konu anlatım ve soru çözüm videolarına ulaşın.
                 </p>
               </div>
-              <div className="flex flex-col items-center space-y-2 rounded-lg border bg-background p-6 shadow-sm">
-                <div className="h-12 w-12 rounded-full bg-blue-500 flex items-center justify-center">
-                  <FileText className="h-6 w-6 text-white" />
-                </div>
-                <h3 className="text-xl font-bold">Haberler</h3>
-                <p className="text-center text-muted-foreground">
-                  Eğitim dünyasından en son haberler, sınav duyuruları ve önemli gelişmeleri takip edin.
-                </p>
-              </div>
+
             </div>
 
             {/* E-Cevap with Google Gemini */}
             <div className="mt-16 flex justify-center">
               <div className="relative w-full max-w-[900px] mx-auto">
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Yaz%C4%B1l%C4%B1%20%C3%96rnekleri%20eklendi%20kopyas%C4%B1_20251024_191536_0000-JCYV6F50bsfV4XTpoEr0m1pCX6VyGX.png"
+                  src="/images/yaz-c4-b1l-c4-b1-20-c3-96rnekleri-20eklendi-20kopyas-c4-b1-20251024-191536-0000.png"
                   alt="E-Cevap with Google Gemini"
                   width={900}
                   height={600}
@@ -312,7 +304,7 @@ export default function Home() {
               <div className="min-w-[250px] snap-center flex-shrink-0">
                 <div className="relative h-[500px] w-[250px] overflow-hidden rounded-[30px] border-4 border-gray-800 shadow-lg">
                   <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_2025-10-21-18-02-56-671_com.hbk.msalrenci-Cgf6rPov7Fa2E3g8AHsnHh4GghunUz.jpg"
+                    src="/images/screenshot-2025-10-21-18-02-56-671-com.jpg"
                     alt="MSAL Öğrenci Uygulaması Ana Ekran"
                     fill
                     className="object-cover"
@@ -323,7 +315,7 @@ export default function Home() {
               <div className="min-w-[250px] snap-center flex-shrink-0">
                 <div className="relative h-[500px] w-[250px] overflow-hidden rounded-[30px] border-4 border-gray-800 shadow-lg">
                   <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_2025-10-21-18-03-05-328_com.hbk.msalrenci-2iBpVbrsjekoN3i26md51r0WV51uaZ.jpg"
+                    src="/images/screenshot-2025-10-21-18-03-05-328-com.jpg"
                     alt="MSAL Öğrenci Ödevler Ekranı"
                     fill
                     className="object-cover"
@@ -334,7 +326,7 @@ export default function Home() {
               <div className="min-w-[250px] snap-center flex-shrink-0">
                 <div className="relative h-[500px] w-[250px] overflow-hidden rounded-[30px] border-4 border-gray-800 shadow-lg">
                   <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_2025-10-21-18-03-23-119_com.hbk.msalrenci-HZBizEeIjUWFH028NZUcNYIZZr1Ujl.jpg"
+                    src="/images/screenshot-2025-10-21-18-03-23-119-com.jpg"
                     alt="MSAL Öğrenci Sınıf Bilgisi"
                     fill
                     className="object-cover"
@@ -345,7 +337,7 @@ export default function Home() {
               <div className="min-w-[250px] snap-center flex-shrink-0">
                 <div className="relative h-[500px] w-[250px] overflow-hidden rounded-[30px] border-4 border-gray-800 shadow-lg">
                   <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_2025-10-21-18-03-33-169_com.hbk.msalrenci-Tsm6jYxajvJJF48mhB8oERoBOumsY0.jpg"
+                    src="/images/screenshot-2025-10-21-18-03-33-169-com.jpg"
                     alt="MSAL Öğrenci Yazılı Tarihleri Ekranı"
                     fill
                     className="object-cover"
@@ -356,7 +348,7 @@ export default function Home() {
               <div className="min-w-[250px] snap-center flex-shrink-0">
                 <div className="relative h-[500px] w-[250px] overflow-hidden rounded-[30px] border-4 border-gray-800 shadow-lg">
                   <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_2025-10-21-18-03-38-757_com.hbk.msalrenci-GtFWil93KPt4FXqRGMkkQjHmsgJLgE.jpg"
+                    src="/images/screenshot-2025-10-21-18-03-38-757-com.jpg"
                     alt="MSAL Öğrenci Ders Programı Ekranı"
                     fill
                     className="object-cover"
@@ -367,7 +359,7 @@ export default function Home() {
               <div className="min-w-[250px] snap-center flex-shrink-0">
                 <div className="relative h-[500px] w-[250px] overflow-hidden rounded-[30px] border-4 border-gray-800 shadow-lg">
                   <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_2025-10-21-18-03-43-980_com.hbk.msalrenci-wHXgsMokzfyfxKoIdfycY8cj1n9yFk.jpg"
+                    src="/images/screenshot-2025-10-21-18-03-43-980-com.jpg"
                     alt="MSAL Öğrenci HocaNet Ekranı"
                     fill
                     className="object-cover"
@@ -378,7 +370,7 @@ export default function Home() {
               <div className="min-w-[250px] snap-center flex-shrink-0">
                 <div className="relative h-[500px] w-[250px] overflow-hidden rounded-[30px] border-4 border-gray-800 shadow-lg">
                   <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_2025-10-21-18-03-48-757_com.hbk.msalrenci-wHXgsMokzfyfxKoIdfycY8cj1n9yFk.jpg"
+                    src="/images/screenshot-2025-10-21-18-03-48-757-com.jpg"
                     alt="MSAL Öğrenci Haberler Ekranı"
                     fill
                     className="object-cover"
@@ -434,7 +426,7 @@ export default function Home() {
         <div className="container flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div className="flex items-center gap-2">
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/rounded-in-photoretrica%20%284%29-QjTedJjd2Ofk6XmshHvHZmVcTNRS2H.png"
+              src="/images/design-mode-images-rounded-in-photoretrica-20-284-29.png"
               alt="MSAL Öğrenci Logo"
               width={30}
               height={30}
@@ -444,7 +436,7 @@ export default function Home() {
           </div>
           <div className="flex items-center gap-4">
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/works_with_android_badge_primary-02PhCxyLn4cn4i9BYJxp1LfWG1vtLb.png"
+              src="/images/design-mode-images-works-with-android-badge-primary.png"
               alt="Works with Android"
               width={80}
               height={27}
