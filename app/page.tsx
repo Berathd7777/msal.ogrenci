@@ -116,7 +116,7 @@ export default function Home() {
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
             <Image
-              src="/images/design-mode-images-rounded-in-photoretrica-20-284-29.png"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/rounded-in-photoretrica%20%284%29-u6Yox6ZWzjPyIcrgivt5FqpFEG15n3.png"
               alt="MSAL Öğrenci Logo"
               width={40}
               height={40}
@@ -149,7 +149,7 @@ export default function Home() {
             <div className="flex flex-col justify-center space-y-4">
               <div className="flex justify-center md:justify-start mb-6">
                 <Image
-                  src="/images/design-mode-images-rounded-in-photoretrica-20-284-29.png"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/rounded-in-photoretrica%20%284%29-u6Yox6ZWzjPyIcrgivt5FqpFEG15n3.png"
                   alt="MSAL Öğrenci Logo"
                   width={100}
                   height={100}
@@ -187,7 +187,7 @@ export default function Home() {
             <div className="flex items-center justify-center">
               <div className="relative h-[600px] w-[300px] overflow-hidden rounded-[40px] border-8 border-gray-800 shadow-xl">
                 <Image
-                  src="/images/screenshot-2025-10-21-18-02-56-671-com.jpg"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_2025-10-21-18-02-56-671_com.hbk.msalrenci-Cgf6rPov7Fa2E3g8AHsnHh4GghunUz.jpg"
                   alt="MSAL Öğrenci Uygulaması Ana Ekran"
                   fill
                   className="object-cover"
@@ -281,7 +281,7 @@ export default function Home() {
             <div className="mt-16 flex justify-center">
               <div className="relative w-full max-w-[900px] mx-auto">
                 <Image
-                  src="/images/yaz-c4-b1l-c4-b1-20-c3-96rnekleri-20eklendi-20kopyas-c4-b1-20251024-191536-0000.png"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Yaz%C4%B1l%C4%B1%20%C3%96rnekleri%20eklendi%20kopyas%C4%B1_20251024_191536_0000-JCYV6F50bsfV4XTpoEr0m1pCX6VyGX.png"
                   alt="E-Cevap with Google Gemini"
                   width={900}
                   height={600}
@@ -304,7 +304,7 @@ export default function Home() {
               <div className="min-w-[250px] snap-center flex-shrink-0">
                 <div className="relative h-[500px] w-[250px] overflow-hidden rounded-[30px] border-4 border-gray-800 shadow-lg">
                   <Image
-                    src="/images/screenshot-2025-10-21-18-02-56-671-com.jpg"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_2025-10-21-18-02-56-671_com.hbk.msalrenci-Cgf6rPov7Fa2E3g8AHsnHh4GghunUz.jpg"
                     alt="MSAL Öğrenci Uygulaması Ana Ekran"
                     fill
                     className="object-cover"
@@ -315,7 +315,7 @@ export default function Home() {
               <div className="min-w-[250px] snap-center flex-shrink-0">
                 <div className="relative h-[500px] w-[250px] overflow-hidden rounded-[30px] border-4 border-gray-800 shadow-lg">
                   <Image
-                    src="/images/screenshot-2025-10-21-18-03-05-328-com.jpg"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_2025-10-21-18-03-05-328_com.hbk.msalrenci-2iBpVbrsjekoN3i26md51r0WV51uaZ.jpg"
                     alt="MSAL Öğrenci Ödevler Ekranı"
                     fill
                     className="object-cover"
@@ -326,7 +326,7 @@ export default function Home() {
               <div className="min-w-[250px] snap-center flex-shrink-0">
                 <div className="relative h-[500px] w-[250px] overflow-hidden rounded-[30px] border-4 border-gray-800 shadow-lg">
                   <Image
-                    src="/images/screenshot-2025-10-21-18-03-23-119-com.jpg"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_2025-10-21-18-04-16-036_com.hbk.msalrenci-G6gjGASy0ehZQpDJY7K95vwkMF0IFl.jpg"
                     alt="MSAL Öğrenci Sınıf Bilgisi"
                     fill
                     className="object-cover"
@@ -337,7 +337,7 @@ export default function Home() {
               <div className="min-w-[250px] snap-center flex-shrink-0">
                 <div className="relative h-[500px] w-[250px] overflow-hidden rounded-[30px] border-4 border-gray-800 shadow-lg">
                   <Image
-                    src="/images/screenshot-2025-10-21-18-03-33-169-com.jpg"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_2025-10-21-18-03-23-119_com.hbk.msalrenci-HZBizEeIjUWFH028NZUcNYIZZr1Ujl.jpg"
                     alt="MSAL Öğrenci Yazılı Tarihleri Ekranı"
                     fill
                     className="object-cover"
@@ -348,7 +348,7 @@ export default function Home() {
               <div className="min-w-[250px] snap-center flex-shrink-0">
                 <div className="relative h-[500px] w-[250px] overflow-hidden rounded-[30px] border-4 border-gray-800 shadow-lg">
                   <Image
-                    src="/images/screenshot-2025-10-21-18-03-38-757-com.jpg"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_2025-10-21-18-03-33-169_com.hbk.msalrenci-Tsm6jYxajvJJF48mhB8oERoBOumsY0.jpg"
                     alt="MSAL Öğrenci Ders Programı Ekranı"
                     fill
                     className="object-cover"
@@ -359,7 +359,7 @@ export default function Home() {
               <div className="min-w-[250px] snap-center flex-shrink-0">
                 <div className="relative h-[500px] w-[250px] overflow-hidden rounded-[30px] border-4 border-gray-800 shadow-lg">
                   <Image
-                    src="/images/screenshot-2025-10-21-18-03-43-980-com.jpg"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_2025-10-21-18-03-38-757_com.hbk.msalrenci-GtFWil93KPt4FXqRGMkkQjHmsgJLgE.jpg"
                     alt="MSAL Öğrenci HocaNet Ekranı"
                     fill
                     className="object-cover"
@@ -370,7 +370,7 @@ export default function Home() {
               <div className="min-w-[250px] snap-center flex-shrink-0">
                 <div className="relative h-[500px] w-[250px] overflow-hidden rounded-[30px] border-4 border-gray-800 shadow-lg">
                   <Image
-                    src="/images/screenshot-2025-10-21-18-03-48-757-com.jpg"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_2025-10-21-18-03-43-980_com.hbk.msalrenci-wHXgsMokzfyfxKoIdfycY8cj1n9yFk.jpg"
                     alt="MSAL Öğrenci Haberler Ekranı"
                     fill
                     className="object-cover"
@@ -426,7 +426,7 @@ export default function Home() {
         <div className="container flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div className="flex items-center gap-2">
             <Image
-              src="/images/design-mode-images-rounded-in-photoretrica-20-284-29.png"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/rounded-in-photoretrica%20%284%29-u6Yox6ZWzjPyIcrgivt5FqpFEG15n3.png"
               alt="MSAL Öğrenci Logo"
               width={30}
               height={30}
@@ -436,14 +436,14 @@ export default function Home() {
           </div>
           <div className="flex items-center gap-4">
             <Image
-              src="/images/design-mode-images-works-with-android-badge-primary.png"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/works_with_android_badge_primary-gHChK5GCDjHeSvruJvkN2z7Aa2YBWv.png"
               alt="Works with Android"
               width={80}
               height={27}
               className="h-[27px] w-auto"
             />
             <Image
-              src="https://camo.githubusercontent.com/06ab6195fff7415040ca8ffd40c8b737d43d66182440f3e347139fa4b4836d2b/68747470733a2f2f6364736173736574732e6170706c652e636f6d2f6c6976652f37575541533335302f696d616765732f6d6164652d666f722d6970686f6e652e706e67"
+              src="/images/made-for-iphone.png"
               alt="Made for iPhone"
               width={80}
               height={27}
