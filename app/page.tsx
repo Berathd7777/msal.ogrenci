@@ -177,13 +177,23 @@ export default function Home() {
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
             <div className="flex flex-col justify-center space-y-4">
               <div className="flex justify-center md:justify-start mb-6">
-                <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/rounded-in-photoretrica%20%284%29-u6Yox6ZWzjPyIcrgivt5FqpFEG15n3.png"
-                  alt="MSAL Öğrenci Logo"
-                  width={100}
-                  height={100}
-                  className="rounded-xl"
-                />
+                <div className="flex items-center gap-4">
+                  <Image
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/rounded-in-photoretrica%20%284%29-u6Yox6ZWzjPyIcrgivt5FqpFEG15n3.png"
+                    alt="MSAL Öğrenci Logo"
+                    width={100}
+                    height={100}
+                    className="rounded-xl"
+                  />
+                  <div className="w-px h-16 bg-border" />
+                  <Image
+                    src="/images/version-5.png"
+                    alt="Sürüm 5.0"
+                    width={90}
+                    height={90}
+                    className="object-contain"
+                  />
+                </div>
               </div>
               <div className="space-y-2">
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
