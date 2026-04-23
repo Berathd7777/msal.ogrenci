@@ -13,5 +13,3 @@ Ders programınızı takip edin, ödevlerinizi yönetin ve okul hayatınızı d�
 # Sertifikalar
 
 <img src="https://r.resimlink.com/hZjb5w.webp" alt="Android" width="120" style="pointer-events: none;"> <img src="https://cdsassets.apple.com/live/7WUAS350/images/made-for-iphone.png" alt="iPhone" width="100" style="pointer-events: none;">
-
-
