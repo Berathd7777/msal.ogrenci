@@ -157,9 +157,6 @@ export default function Home() {
             <Link href="#features" className="text-sm font-medium hover:text-primary">
               Özellikler
             </Link>
-            <Link href="/hocanet" className="text-sm font-medium hover:text-primary">
-              HocaNet
-            </Link>
             <Link href="#screenshots" className="text-sm font-medium hover:text-primary">
               Ekran Görüntüleri
             </Link>
@@ -226,7 +223,7 @@ export default function Home() {
             <div className="flex items-center justify-center">
               <div className="relative h-[600px] w-[300px] overflow-hidden rounded-[40px] border-8 border-gray-800 shadow-xl">
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_2025-10-21-18-02-56-671_com.hbk.msalrenci-Cgf6rPov7Fa2E3g8AHsnHh4GghunUz.jpg"
+                  src="/images/screenshots/ana-ekran.jpg"
                   alt="MSAL Öğrenci Uygulaması Ana Ekran"
                   fill
                   className="object-cover"
@@ -260,7 +257,7 @@ export default function Home() {
                 <div className="h-12 w-12 rounded-full bg-blue-500 flex items-center justify-center">
                   <Search className="h-6 w-6 text-white" />
                 </div>
-                <h3 className="text-xl font-bold">E-Cevap</h3>
+                <h3 className="text-xl font-bold">CleanRead</h3>
                 <p className="text-center text-muted-foreground">
                   Ders kitaplarının cevaplarına kolayca erişin ve çalışmalarınızı kontrol edin.
                 </p>
@@ -301,31 +298,6 @@ export default function Home() {
                   Haftalık ders programınızı görüntüleyin ve günlük derslerinizi takip edin.
                 </p>
               </div>
-              <div
-                className="flex flex-col items-center space-y-2 rounded-lg border bg-background p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer"
-                onClick={() => (window.location.href = "/hocanet")}
-              >
-                <div className="h-12 w-12 rounded-full bg-blue-500 flex items-center justify-center">
-                  <FileText className="h-6 w-6 text-white" />
-                </div>
-                <h3 className="text-xl font-bold">HocaNet</h3>
-                <p className="text-center text-muted-foreground">
-                  Alanında uzman hocaların konu anlatım ve soru çözüm videolarına ulaşın.
-                </p>
-              </div>
-            </div>
-
-            {/* E-Cevap with Google Gemini */}
-            <div className="mt-16 flex justify-center">
-              <div className="relative w-full max-w-[900px] mx-auto">
-                <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Yaz%C4%B1l%C4%B1%20%C3%96rnekleri%20eklendi%20kopyas%C4%B1_20251024_191536_0000-JCYV6F50bsfV4XTpoEr0m1pCX6VyGX.png"
-                  alt="E-Cevap with Google Gemini"
-                  width={900}
-                  height={600}
-                  className="object-contain rounded-lg"
-                />
-              </div>
             </div>
           </div>
         </section>
@@ -342,7 +314,7 @@ export default function Home() {
               <div className="min-w-[250px] snap-center flex-shrink-0">
                 <div className="relative h-[500px] w-[250px] overflow-hidden rounded-[30px] border-4 border-gray-800 shadow-lg">
                   <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_2025-10-21-18-02-56-671_com.hbk.msalrenci-Cgf6rPov7Fa2E3g8AHsnHh4GghunUz.jpg"
+                    src="/images/screenshots/ana-ekran.jpg"
                     alt="MSAL Öğrenci Uygulaması Ana Ekran"
                     fill
                     className="object-cover"
@@ -353,7 +325,7 @@ export default function Home() {
               <div className="min-w-[250px] snap-center flex-shrink-0">
                 <div className="relative h-[500px] w-[250px] overflow-hidden rounded-[30px] border-4 border-gray-800 shadow-lg">
                   <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_2025-10-21-18-03-05-328_com.hbk.msalrenci-2iBpVbrsjekoN3i26md51r0WV51uaZ.jpg"
+                    src="/images/screenshots/odevler.jpg"
                     alt="MSAL Öğrenci Ödevler Ekranı"
                     fill
                     className="object-cover"
@@ -364,7 +336,7 @@ export default function Home() {
               <div className="min-w-[250px] snap-center flex-shrink-0">
                 <div className="relative h-[500px] w-[250px] overflow-hidden rounded-[30px] border-4 border-gray-800 shadow-lg">
                   <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_2025-10-21-18-04-16-036_com.hbk.msalrenci-G6gjGASy0ehZQpDJY7K95vwkMF0IFl.jpg"
+                    src="/images/screenshots/ogrenci-bilgi.png"
                     alt="MSAL Öğrenci Öğrenci Bilgi"
                     fill
                     className="object-cover"
@@ -375,7 +347,7 @@ export default function Home() {
               <div className="min-w-[250px] snap-center flex-shrink-0">
                 <div className="relative h-[500px] w-[250px] overflow-hidden rounded-[30px] border-4 border-gray-800 shadow-lg">
                   <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_2025-10-21-18-03-23-119_com.hbk.msalrenci-HZBizEeIjUWFH028NZUcNYIZZr1Ujl.jpg"
+                    src="/images/screenshots/yazili-tarihleri.jpg"
                     alt="MSAL Öğrenci Yazılı Tarihleri Ekranı"
                     fill
                     className="object-cover"
@@ -386,7 +358,7 @@ export default function Home() {
               <div className="min-w-[250px] snap-center flex-shrink-0">
                 <div className="relative h-[500px] w-[250px] overflow-hidden rounded-[30px] border-4 border-gray-800 shadow-lg">
                   <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_2025-10-21-18-03-33-169_com.hbk.msalrenci-Tsm6jYxajvJJF48mhB8oERoBOumsY0.jpg"
+                    src="/images/screenshots/ders-programi.jpg"
                     alt="MSAL Öğrenci Ders Programı Ekranı"
                     fill
                     className="object-cover"
@@ -397,24 +369,24 @@ export default function Home() {
               <div className="min-w-[250px] snap-center flex-shrink-0">
                 <div className="relative h-[500px] w-[250px] overflow-hidden rounded-[30px] border-4 border-gray-800 shadow-lg">
                   <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_2025-10-21-18-03-38-757_com.hbk.msalrenci-GtFWil93KPt4FXqRGMkkQjHmsgJLgE.jpg"
-                    alt="MSAL Öğrenci HocaNet Ekranı"
+                    src="/images/screenshots/cleanread.jpg"
+                    alt="CleanRead Ekranı"
                     fill
                     className="object-cover"
                   />
                 </div>
-                <p className="text-center mt-2 font-medium">HocaNet</p>
+                <p className="text-center mt-2 font-medium">CleanRead</p>
               </div>
               <div className="min-w-[250px] snap-center flex-shrink-0">
                 <div className="relative h-[500px] w-[250px] overflow-hidden rounded-[30px] border-4 border-gray-800 shadow-lg">
                   <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_2025-10-21-18-03-43-980_com.hbk.msalrenci-wHXgsMokzfyfxKoIdfycY8cj1n9yFk.jpg"
-                    alt="MSAL Öğrenci Haberler Ekranı"
+                    src="/images/screenshots/yazili-ornekleri.jpg"
+                    alt="MSAL Öğrenci Yazılı Örnekleri Ekranı"
                     fill
                     className="object-cover"
                   />
                 </div>
-                <p className="text-center mt-2 font-medium">Haberler</p>
+                <p className="text-center mt-2 font-medium">Yazılı Örnekleri</p>
               </div>
             </div>
           </div>
